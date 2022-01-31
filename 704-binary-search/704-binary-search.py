@@ -1,4 +1,4 @@
 class Solution(object):
     def search(self, nums, target):
-        return nums.index(target) if target in nums else -1
+        return -1 if target not in nums else nums.index(target)
         
