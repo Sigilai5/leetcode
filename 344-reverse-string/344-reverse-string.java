@@ -9,8 +9,8 @@ class Solution {
             s[left] = s[right];
             s[right] = hold;
             
-            left += 1; 
-            right -= 1;
+            left ++; 
+            right --;
                     
         }   
     }
