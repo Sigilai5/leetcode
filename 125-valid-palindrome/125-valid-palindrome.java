@@ -1,9 +1,8 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        // s = s.replaceAll("[^a-zA-Z0-9]", "");
         s = s.replaceAll("[^a-zA-Z0-9]","");
         s = s.toLowerCase();
-        s = s.replaceAll("\\s","");
+        // s = s.replaceAll("\\s","");  //Remove whitespaces
         char sArr[] = s.toCharArray();
         char rArr[] = new char[sArr.length];
         int pointer = 0;
