@@ -7,7 +7,7 @@ class Solution {
      Stack<Character> pStack = new Stack<Character>();
      for(char i: s.toCharArray()){
          if(i == '(' || i =='{' || i == '['){
-             pStack.add(i);
+             pStack.push(i);
          }else if( i == ')' && !pStack.isEmpty() && pStack.peek() == '('){
              pStack.pop();
          }else if( i == '}' && !pStack.isEmpty() && pStack.peek() == '{'){
