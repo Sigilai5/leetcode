@@ -2,7 +2,7 @@
 
 class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
-       if(ransomNote == magazine) return true;
+       // if(ransomNote == magazine) return true;
         
         int[] alphabetArr = new int[26]; //Memory location for all letters in the alphabet
         
