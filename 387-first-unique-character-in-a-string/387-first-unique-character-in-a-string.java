@@ -3,12 +3,13 @@ class Solution {
         
         int[] alphArr = new int[26];
         String oneRepeating = new String();
+        char[] sArray = s.toCharArray();
     
-        for(char ch: s.toCharArray()){
+        for(char ch: sArray){
             alphArr[ch - 'a']++;            
         }
         
-        for(char ch: s.toCharArray()){
+        for(char ch: sArray){
             if(alphArr[ch - 'a'] == 1){
                 oneRepeating += ch;
             }
@@ -24,7 +25,7 @@ class Solution {
         }
        
         
-        char[] sArray = s.toCharArray();
+
         
         for(int i = 0; i < sArray.length; i++){
             if(sArray[i] == rArray[0]){
