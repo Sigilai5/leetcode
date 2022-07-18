@@ -14,7 +14,7 @@ class Solution {
         }
         
         for(int num: arr_nums){
-            if(numsMap.containsKey(num) == false){
+            if(!numsMap.containsKey(num)){
                 return num;
             }
         }
