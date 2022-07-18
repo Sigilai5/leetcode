@@ -7,7 +7,7 @@ class Solution {
             arr_nums[i] = i;
         }
         
-        HashMap<Integer,Integer> numsMap = new HashMap<Integer,Integer>();
+        HashMap<Integer,Integer> numsMap = new HashMap();
         
         for(int num: nums){
             numsMap.put(num,num);
@@ -24,3 +24,6 @@ class Solution {
        
     }
 }
+
+//Space Complexity -> O(n+m)
+//Time Complexity -> O(n+m+o)
