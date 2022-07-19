@@ -10,12 +10,14 @@ class Solution {
     while(right_p < prices.length){
         if(prices[left_p] > prices[right_p]){
             left_p = right_p;
+            right_p+=1;
         }else{
             int total = prices[right_p] - prices[left_p];
             max_profit = Math.max(max_profit,total);
+            right_p+=1;
         }
         
-        right_p++;
+       
     }
         
         return max_profit;
