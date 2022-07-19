@@ -1,7 +1,5 @@
 class Solution {
     public int maxProfit(int[] prices) {
-    
-    if(prices.length == 1) return 0;
         
     int left_p = 0;
     int right_p = 1;
