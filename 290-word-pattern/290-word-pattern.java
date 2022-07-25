@@ -1,6 +1,6 @@
 class Solution {
     public boolean wordPattern(String pattern, String s) {
-        String[] s_arr = s.split("\\W+");
+        String[] s_arr = s.split(" ");
         HashMap<Character,String> s_map = new HashMap();
         boolean follow = true;
         
