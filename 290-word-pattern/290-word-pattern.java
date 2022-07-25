@@ -15,11 +15,9 @@ class Solution {
                     follow = false;
                 }
                 
-            } else {
-                if(s_map.containsValue(s_arr[i])){
+            } else if(s_map.containsValue(s_arr[i])){
                     follow = false;
                 }
-            }
             
             
             s_map.put(current_char,s_arr[i]);
