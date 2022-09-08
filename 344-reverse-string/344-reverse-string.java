@@ -1,17 +1,16 @@
 class Solution {
     public void reverseString(char[] s) {
-     
-        int left = 0;
-        int right = s.length-1;
+                
+        int l_pointer = 0;
+        int r_pointer = s.length - 1;
         
-        while(left <= right){
-            char hold = s[left];
-            s[left] = s[right];
-            s[right] = hold;
-            
-            left ++; 
-            right --;
-                    
-        }   
+        while(l_pointer < r_pointer){
+            char hold = s[l_pointer];
+            s[l_pointer] = s[r_pointer];
+            s[r_pointer] = hold;
+            l_pointer++;
+            r_pointer--;
+        }
+        
     }
 }
