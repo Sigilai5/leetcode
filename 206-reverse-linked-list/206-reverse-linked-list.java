@@ -28,7 +28,9 @@ class Solution {
         
         return prevNode;
         
-       
+       //Space Complextity O(1) Since we are using pointers.
+       //Time Complextity O(n)
+        
        
     }
 }
