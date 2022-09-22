@@ -18,11 +18,9 @@ class Solution {
         if(root == null) return root;
         
         
-        TreeNode currentNode = root;
-        
-        TreeNode hold = currentNode.left;
-        currentNode.left = currentNode.right;
-        currentNode.right = hold;
+        TreeNode hold = root.left;
+        root.left = root.right;
+        root.right = hold;
         
         invertTree(root.left);
         invertTree(root.right);
