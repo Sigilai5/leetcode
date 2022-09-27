@@ -1,24 +1,21 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        HashSet<Integer> nums_set = new HashSet();
-        int pointer = 0;
-        int single_number = 0;
-        while(pointer < nums.length){
-            if(nums_set.contains(nums[pointer])){
-                nums_set.remove(nums[pointer]);
+        if(nums.length == 1) return nums[0];
+        
+        HashSet<Integer> unique_set = new HashSet();
+        
+        for(int i : nums){
+            if(unique_set.contains(i)){
+                unique_set.remove(i);
             }else{
-                nums_set.add(nums[pointer]);
+                unique_set.add(i);
             }
             
-            pointer++;
-        }
-    
-        for(int i : nums_set){
-            single_number = i;
-            break;
+            
         }
         
-        return single_number;
+        
+        return unique_set.stream().findFirst().get();
         
     }
 }
