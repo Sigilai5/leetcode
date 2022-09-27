@@ -2,8 +2,7 @@ class Solution {
     public int missingNumber(int[] nums) {
           if(nums.length < 1) return -1;
           if(nums.length == 1 && nums[0] == 0) return 1;  
-          if(nums.length == 1 && nums[0] == 1) return 0;  
-                 
+                        
         
           HashSet<Integer> missing = new HashSet();
         
