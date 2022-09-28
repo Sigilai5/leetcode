@@ -33,3 +33,7 @@ class Solution {
         return dummyNode.next;
     }
 }
+
+
+//Space Complexity = O(1) since we are just shifting pointers
+//Time  Complexity = O(n) since we are traversing through the linked lists
