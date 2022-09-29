@@ -24,11 +24,10 @@ class Solution {
         
         invertTree(root.left);
         invertTree(root.right);
-
-       
-     
         
         return root;
-        
     }
 }
+
+//Space complexity-> O(1), since we are only shifting pointers.
+//Time complexity-> O(n) since we are traversing through the tree.
