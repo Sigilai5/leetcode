@@ -21,3 +21,7 @@ class Solution {
         
     }
 }
+
+
+//Space Complexity -> O(n) since we are using a stack.
+//Time Complexity -> O(n)
