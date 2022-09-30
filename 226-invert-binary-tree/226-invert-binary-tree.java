@@ -31,4 +31,4 @@ class Solution {
 }
 
 //Space complexity-> O(1), since we are only shifting pointers.
-//Time complexity-> O(n) since we are traversing through the tree.
+//Time complexity-> O(h) since we are traversing through the height fo the tree.
