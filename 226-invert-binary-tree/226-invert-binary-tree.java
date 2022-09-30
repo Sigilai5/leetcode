@@ -18,9 +18,9 @@ class Solution {
         /*ITERATIVE APPORACH*/
         if(root == null) return root;
         
-        Queue<TreeNode> tree_nodes = new LinkedList<TreeNode>();
+        Queue<TreeNode> tree_nodes = new LinkedList<TreeNode>();  //We use que for level order traversal.
         tree_nodes.add(root);
-        while(!tree_nodes.isEmpty()){  //This ensures that all the child nodes have been inverted accordingly
+        while(!tree_nodes.isEmpty()){//making sure its empty at the end to escape the condition and return the root once invertion is done in both sides.
             TreeNode temp = tree_nodes.poll(); 
             
             TreeNode hold = temp.left;
@@ -39,6 +39,10 @@ class Solution {
         
         
         return root;
+        
+        
+        //Space complexity-> O(n), since we are use a Queue data store.
+        //Time complexity-> O(n) since we are traversing through the height of the tree.
         
           /*RECURSIVE APPROACH*/
 //        if(root == null) return root;
