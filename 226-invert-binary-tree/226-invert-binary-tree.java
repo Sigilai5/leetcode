@@ -19,7 +19,7 @@ class Solution {
         if(root == null) return root;
         
         Queue<TreeNode> tree_nodes = new LinkedList<TreeNode>();  //We use que for level order traversal.
-        tree_nodes.add(root);
+        tree_nodes.add(root); // Prevent the queue from being empty at first.
         while(!tree_nodes.isEmpty()){//making sure its empty at the end to escape the condition and return the root once invertion is done in both sides.
             TreeNode temp = tree_nodes.poll(); 
             
