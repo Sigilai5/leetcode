@@ -15,6 +15,9 @@ class Solution {
     }
 }
 
+//Space Complexity -> O(n)
+//Time Complexity -> O(n)
+
 
 
 // class Solution {
