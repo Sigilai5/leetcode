@@ -3,12 +3,13 @@ class Solution {
         HashMap<Integer,Integer> duplicates = new HashMap();
         for(int i: nums){
             duplicates.put(i,duplicates.getOrDefault(i,0)+1);
+        }
+        
+        for(int i: duplicates.keySet()){
             if(duplicates.get(i) > 1){
                 return true;
             }
         }
-        
-        
         
         return false;
     }
