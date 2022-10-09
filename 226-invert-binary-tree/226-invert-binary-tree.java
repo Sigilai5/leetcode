@@ -15,30 +15,29 @@
  */
 class Solution {
     public TreeNode invertTree(TreeNode root) {
-        /*ITERATIVE APPORACH*/
+        /*ITERATIVE APPROACH  */
         if(root == null) return root;
-        
-        Queue<TreeNode> tree_nodes = new LinkedList<TreeNode>();  //We use que for level order traversal.
-        tree_nodes.add(root); // Prevent the queue from being empty at first.
-        while(!tree_nodes.isEmpty()){//making sure its empty at the end to escape the condition and return the root once invertion is done in both sides.
-            TreeNode temp = tree_nodes.poll(); 
+        Queue<TreeNode> nodes = new LinkedList<>();
+        nodes.add(root);
+        while(!nodes.isEmpty()){
+            TreeNode rootNode = nodes.poll();
             
-            TreeNode hold = temp.left;
-            temp.left = temp.right;
-            temp.right = hold;
+            TreeNode hold = rootNode.left;
+            rootNode.left = rootNode.right;
+            rootNode.right = hold;
             
-            if(temp.left != null){
-                tree_nodes.add(temp.left);
+            if(rootNode.left != null){
+                nodes.add(rootNode.left);
             }
             
-             if(temp.right != null){
-                tree_nodes.add(temp.right);
+            if(rootNode.right != null){
+                nodes.add(rootNode.right);
             }
-            
+           
         }
         
-        
         return root;
+        
         
         
         //Space complexity-> O(n), since we are use a Queue data store.
