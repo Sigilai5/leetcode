@@ -17,10 +17,8 @@ class Solution {
         
         
     }
-         
-    if(maxProfit > 0) return maxProfit;
         
-    return 0;    
+    return maxProfit;    
   
   }
     
