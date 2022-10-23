@@ -15,3 +15,7 @@ public class Solution {
        
     }
 }
+
+
+//Space Complexity: O(1)
+//Time Complexity: O(32) -> O(1)
