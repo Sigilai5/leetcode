@@ -25,6 +25,8 @@ public class Solution {
         
     return bitCount;
    
+        //Time Complexity: O(m) m is the number of set bits present
+        //Space Complexity: O(1)
        
     }
 }
