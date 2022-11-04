@@ -52,6 +52,9 @@ class Solution {
         
         return root;
         
+        //Space Complexity -> O(n);
+        //Time Complexity -> O(h)
+        
         
         /*DFS Recursively*/
 //         if(root == null) return root;
@@ -68,9 +71,10 @@ class Solution {
 //         connect(root.right);
         
 //         return root;
+         //Space Complexity -> O(1)
+    //Time Complexity -> O(h)
         
     }
     
-    //Space Complexity -> O(1)
-    //Time Complexity -> O(h)
+   
 }
