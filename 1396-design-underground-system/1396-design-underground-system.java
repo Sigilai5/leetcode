@@ -71,7 +71,8 @@ class UndergroundSystem {
 }
 
 
-
+//Time Complexity -> O(1)
+//Space Complexity -> O(N+M)
 
 // Your UndergroundSystem object will be instantiated and called as such:
 // obj = UndergroundSystem()
