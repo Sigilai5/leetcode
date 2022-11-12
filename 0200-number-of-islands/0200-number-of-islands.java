@@ -1,42 +1,44 @@
 class Solution {
     public int numIslands(char[][] grid) {
-        if(grid.length == 0 || grid == null) return 0;  //Check for null values submitted
+        if(grid.length == 0 || grid == null) return 0;
+        int countIsland = 0;
         
-        int countIslands = 0;
-        for(int i = 0; i < grid.length; i++){
-            for(int j = 0; j < grid[i].length; j++){
+        for(int i = 0;i < grid.length;i++){
+            for(int j = 0; j < grid[i].length;j++){
                 if(grid[i][j] == '1'){
-                    countIslands += dfsCount(grid, i, j);                    
+                    countIsland += sinkIsland(grid,i,j);  //Sink Island
+                    
                 }
                 
             }
         }
         
-        
-        return countIslands;
+      return countIsland;
         
     }
     
-    public int dfsCount(char[][] grid, int i, int j){
-        int islandFound  = 0;
+    
+    public int sinkIsland(char[][] grid, int i, int j){
+        int count = 0;
         
         if(i < 0 || i >= grid.length || j < 0 || j >= grid[i].length){
-            islandFound = 0;
-        } else if(grid[i][j] == '0'){               
-            islandFound = 0;
-        } else if(grid[i][j] == '1'){
-            grid[i][j] = '0';     //Sink island(Backtracking)
-            dfsCount(grid,i+1,j); // Dow
-            dfsCount(grid,i-1,j); // Up
-            dfsCount(grid,i,j+1); // Right
-            dfsCount(grid,i,j-1); // Left
-            islandFound = 1;
-            
-        } else{
-            islandFound = 0;
+            count = 0;
+        }else if(grid[i][j] == '0'){
+            count = 0;
+        }else if(grid[i][j] == '1'){
+            grid[i][j] = '0';
+            sinkIsland(grid,i-1,j); //Sink Left
+            sinkIsland(grid,i,j-1); //Sink top
+            sinkIsland(grid,i,j+1); //Sink Bottom
+            sinkIsland(grid,i+1,j); //Sink right
+            count = 1;
+        }else{
+            count = 0;
         }
         
-        return islandFound;
+            
+        
+        return count;
         
     }
     
