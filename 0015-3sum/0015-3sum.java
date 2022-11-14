@@ -7,6 +7,7 @@ class Solution {
             if(i > 0 && nums[i] == nums[i-1]){
                 continue;
             }
+             
             int l = i+1;
             int r = nums.length -1;
             
