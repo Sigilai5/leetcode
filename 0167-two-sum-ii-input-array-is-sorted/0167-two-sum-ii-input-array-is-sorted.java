@@ -17,3 +17,6 @@ class Solution {
         
     }
 }
+
+//Space Complexity: O(n)->Use of HashMap
+//Time Complexity: O(n) -> looping through numbers array
