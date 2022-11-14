@@ -24,8 +24,11 @@ class Solution {
                 result.add(Arrays.asList(first,nums[left],nums[right]));
                 left++;
                 while(nums[left] == nums[left-1] && left < right){
-                    left++;
-                }
+                     left++;
+                    }
+                while(nums[right] == nums[right-1] && left < right){
+                     right--;
+                    }
                 }
             } 
         }
