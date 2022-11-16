@@ -26,7 +26,9 @@ class Solution {
            List<Integer> levelList = new ArrayList(); // Level list    
            int levelSize = queue.size(); // [9,20] -> 2
            
-           for(int i = 0; i<levelSize;i++){
+            
+           int start = 0; 
+           while(start < levelSize){
                TreeNode currentLevel = queue.remove(); //Removing the nodes in queue [9,20]
                if(leftToRight == true){
                   levelList.add(currentLevel.val);  //Left to Right  [9,20]
@@ -42,6 +44,7 @@ class Solution {
                    queue.add(currentLevel.right);  // [9,20]
                }
 
+               start++;
                }    
 
           
