@@ -15,41 +15,48 @@
  */
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-            List<List<Integer>> result = new ArrayList();
-            if(root == null) return result;
-    
-            Queue<TreeNode> queue = new LinkedList();
-            queue.add(root);
-            boolean leftToRight = true;
-            while(!queue.isEmpty()){
-                int levelSize = queue.size();
-                List<Integer> levelList = new ArrayList();
-                                
-                for(int i = 0; i < levelSize;i++){
-                    TreeNode current = queue.poll();
-                    if(leftToRight == true){
-                        levelList.add(current.val);
-                    }else{
-                       levelList.add(0,current.val); 
-                        
-                    }
-                    
-                    if(current.left != null) queue.add(current.left);
-                    if(current.right != null) queue.add(current.right);
-                                        
-                       
-                    }
-                
-                    
-                
-                    leftToRight = !leftToRight;
-                    result.add(levelList);
-                           
-                
-                    
-                     }
-                
-                     return result;                
-            }
+        if(root == null) return new ArrayList();
+        List<List<Integer>> result = new ArrayList();
+        Queue<TreeNode> queue = new LinkedList();
+        boolean leftToRight = true;
+        
+        queue.add(root); //Queue to perform BFS iteratively level by level
+        
+        while(!queue.isEmpty()){
+           List<Integer> levelList = new ArrayList(); // Level list    
+           int levelSize = queue.size(); // [9,20] -> 2
+           
+           for(int i = 0; i<levelSize;i++){
+               TreeNode currentLevel = queue.remove(); //Removing the nodes in queue [9,20]
+               if(leftToRight == true){
+                  levelList.add(currentLevel.val);  //Left to Right  [9,20]
+               }else{
+                   levelList.add(0,currentLevel.val);  //Right to Left
+               }
+
+               if(currentLevel.left != null){
+                   queue.add(currentLevel.left);  // [9]
+               } 
+
+                if(currentLevel.right != null){
+                   queue.add(currentLevel.right);  // [9,20]
+               }
+
+               }    
+
+          
+            result.add(levelList);  //[[3],[9,20]]
+            leftToRight = !leftToRight; // false
+        
+        }
+        
+        
+        return result;
+        
+        
                 
     }
+    
+}
+
+
