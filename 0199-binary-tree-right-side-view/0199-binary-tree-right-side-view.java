@@ -25,10 +25,11 @@ class Solution {
             
         while(!queue.isEmpty()){
             int levelSize = queue.size();
+            int rightMost = levelSize - 1;
             
             for(int i = 0; i< levelSize;i++){
                 TreeNode currentLevel = queue.poll();
-                if(i == levelSize - 1){
+                if(i == rightMost){
                     result.add(currentLevel.val);
                 }
                 
