@@ -1,62 +1,63 @@
 class UndergroundSystem {
-    Map<Integer,Journey> journeys;   //Check in time
-    Map<String,Average> averages;           //Record total time and number of customers
     
-  
-    
+    Map<Integer,Journey> journeys;
+    Map<String,Average> averages;
+ 
     public UndergroundSystem() {   
        journeys = new HashMap();
-       averages = new HashMap(); 
+       averages = new HashMap();
     }
     
     public void checkIn(int id, String stationName, int t) {
-        journeys.put(id,new Journey(id,stationName,t));
+      journeys.put(id, new Journey(id,stationName,t));
     }
     
     public void checkOut(int id, String stationName, int t) {
-    Journey journey = journeys.get(id);
-    journeys.remove(id);      //Journey is complete
+      Journey arrival = journeys.get(id);
+      journeys.remove(id);
         
-    int timeDifference = t - journey.t;
+      double timeDiff = t - arrival.t;
         
-    String keyStation = journey.stationName + "," + stationName;    
+      String startEnd =  arrival.stationName + "," + stationName; 
         
-    Average average = averages.containsKey(keyStation) ? averages.get(keyStation) : new Average();   
         
-    average.updateAverage(timeDifference);  
+      Average average = averages.containsKey(startEnd) ? averages.get(startEnd) : new Average();
+       
+      average.updateAverage(timeDiff);
         
-    averages.put(keyStation,average);    
-        
-    }
-    
-    public double getAverageTime(String startStation, String endStation) {
-      String keyStation = startStation + "," + endStation;  
-      return averages.get(keyStation).getAverage();  
-        
+      averages.put(startEnd,average);  
         
     }
     
+   double getAverageTime(String startStation, String endStation) {
+        String startEnd = startStation + "," + endStation;
+        return averages.get(startEnd).getAverage();
+       
+    }
+    
+
     class Journey {
         private int id;
         private String stationName;
         private int t;
         
+        
         public Journey(int id, String stationName, int t){
             this.id = id;
             this.stationName = stationName;
-            this.t = t;
+            this.t =  t;
         }
-        
+ 
     }
     
     
     class Average {
-        private double totalTime = 0;
         private int customerCount = 0;
+        private double totalTime = 0;
         
-        public void updateAverage(int timeDifference){
-            totalTime += timeDifference;
-            customerCount++;
+        public void updateAverage(double timeTaken){
+            totalTime += timeTaken;
+            customerCount  += 1;
             
         }
         
@@ -64,30 +65,17 @@ class UndergroundSystem {
             return totalTime / customerCount;
         }
         
+        
     }
+
+    
+
  
     
     
 }
 
 
-//Time Complexity -> O(1)
-//Space Complexity -> O(N+M)
-
-// Your UndergroundSystem object will be instantiated and called as such:
-// obj = UndergroundSystem()
-// obj.checkIn(id,stationName,t)
-// obj.checkOut(id,stationName,t)
-// param_3 = obj.getAverageTime(startStation,endStation)
-
-
-//A->B  3 
-//A->B  2
-//A->B  4
-
-//A->C
-
-//A->C
-
-
-//Average->(3+2+4)/3 -> 3
+//Nairobi -> Mombasa -> Average time: Time taken in total for all customers/number of customers
+//Nairobi -> Mombasa -> Jack ->2 -> Brian -> 3
+//Average -> 5/2 -> 2.5
