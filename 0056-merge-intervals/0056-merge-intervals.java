@@ -34,3 +34,6 @@ class Solution {
         
     }
 }
+
+//Time Complexity: O(NlogN) -> Since we are sorting the array ->Arrays.sort(intervals,(arr1,arr2) -> Integer.compare(arr1[0],arr2[0])); 
+//Space Complexity: O(N) -> Since we have an array list
