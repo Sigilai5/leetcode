@@ -1,14 +1,10 @@
 class Solution {
     public int getKth(int lo, int hi, int k) {
         List<Integer> list = new ArrayList();           
-        for(int i = lo; i <= hi;i++){
-            list.add(i);
-        }
-        
         HashMap<Integer,Integer> map = new HashMap();
         
-        for(int i = 0; i < list.size(); i++){
-            int x = list.get(i);
+        for(int i = lo; i <= hi; i++){
+            int x = i;
             int count = 1;
             while(x != 1){
                 if(x%2 == 0){
@@ -20,7 +16,8 @@ class Solution {
                 }
             }
             
-            map.put(list.get(i),count);
+            map.put(i,count);
+            list.add(i);
         }
         
   
