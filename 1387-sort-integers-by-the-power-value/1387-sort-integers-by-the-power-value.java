@@ -24,7 +24,7 @@ class Solution {
         }
         
   
-        Collections.sort(list,(a,b) -> map.get(a).equals(map.get(b)) ? a.compareTo(b) : map.get(a) - map.get(b));
+        Collections.sort(list,(a,b) ->  map.get(a) - map.get(b));
         
         
         List<Integer> output = list.subList(k-1,k);
