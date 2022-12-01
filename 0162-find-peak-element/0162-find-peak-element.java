@@ -6,9 +6,7 @@ class Solution {
             pq.add(num);
         }
         
-        
         int max = pq.poll();
-        
         
         int pointer = 0;
         
@@ -16,7 +14,6 @@ class Solution {
             if(nums[pointer] == max){
                 return pointer;
             }
-            
             pointer++;
         }
         
