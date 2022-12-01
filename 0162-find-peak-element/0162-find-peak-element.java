@@ -1,22 +1,18 @@
 class Solution {
     public int findPeakElement(int[] nums) {
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> b - a);
+        if(nums.length == 1) return 0;
+        if(nums[0] > nums[1]) return 0;
+        if(nums[nums.length - 1] > nums[nums.length - 2]) return nums.length -1;
         
-        for(int num:nums){
-            pq.add(num);
-        }
         
-        int max = pq.poll();
-        
-        int pointer = 0;
-        
-        while(pointer < nums.length){
-            if(nums[pointer] == max){
+        int pointer = 1;
+        while(pointer <= nums.length - 2){
+            if(nums[pointer] > nums[pointer -1] && nums[pointer] > nums[pointer+1]){
                 return pointer;
+            }else{
+                pointer++;
             }
-            pointer++;
         }
-        
         
         return -1;
         
