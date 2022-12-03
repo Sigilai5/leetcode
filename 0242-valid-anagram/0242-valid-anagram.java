@@ -1,17 +1,24 @@
 class Solution {
-    public boolean isAnagram(String s, String t) {   
-        //Option 3
-        char[] sArray = s.toCharArray();
-        char[] tArray = t.toCharArray();
+    public boolean isAnagram(String s, String t) {  
+        //Option 4
         
-        Arrays.sort(sArray);
-        Arrays.sort(tArray);
+        if(s.length() != t.length()) return false;
+        int[] store = new int[26];
+        
+        for(int i = 0; i < s.length();i++){
+            store[s.charAt(i) - 'a']++;
+            store[t.charAt(i) - 'a']--;  
+        }
         
         
-        return Arrays.equals(sArray,tArray);
+        for(int i: store) if(i != 0) return false;
+        
+        return true;
         
         
-//         //*Option 2*
+        
+        
+        //         //*Option 3*
         
 //         int[] sArray = new int[26];
 //         int[] tArray = new int[26];
@@ -31,6 +38,21 @@ class Solution {
         
         
 //         return false;
+        
+        
+        
+//         //Option 2
+//         char[] sArray = s.toCharArray();
+//         char[] tArray = t.toCharArray();
+        
+//         Arrays.sort(sArray);
+//         Arrays.sort(tArray);
+        
+        
+//         return Arrays.equals(sArray,tArray);
+        
+        
+
         
         
         
