@@ -11,9 +11,11 @@ class Solution {
         }
         
         
-        for(int i: store) if(i != 0) return false;
+        // for(int i: store) if(i != 0) return false;
+        int[] perfect = new int[26];
         
-        return true;
+        
+        return Arrays.equals(store,perfect);
         
         
         
