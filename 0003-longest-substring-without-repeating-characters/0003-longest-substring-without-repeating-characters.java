@@ -12,14 +12,13 @@ class Solution {
      while(right < s.length()){
          if(!set.contains(s.charAt(right))){
              set.add(s.charAt(right));
+             longest = Math.max(longest,set.size());
              right++;
          }else{
              set.remove(s.charAt(left));
              left++;      
          }
-         
-         longest = Math.max(longest,right-left);
-           
+                    
      }   
         
         
