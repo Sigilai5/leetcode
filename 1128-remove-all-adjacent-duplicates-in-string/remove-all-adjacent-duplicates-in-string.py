@@ -11,6 +11,8 @@ class Solution:
             else:
                 stack.append(char)
         
-
+        print(stack)
         return "".join(stack)       
         
+        # SC -> O(N)
+        # TC -> O(N)
