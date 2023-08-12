@@ -5,24 +5,20 @@ class Solution:
         
         intervals.sort(key=lambda x:x[0])
 
-        output = [intervals[0]]
+        i,j = 0, 1
 
-        pointer_1 = 0 # points at the output list
-        pointer_2 = 1 # points at the intervals list
-
-        while pointer_2 < len(intervals):
-            if intervals[pointer_2][0] <= output[pointer_1][1]:
-                output[pointer_1][1] = max(intervals[pointer_2][1],output[pointer_1][1])
+        while j < len(intervals):
+            if intervals[j][0] <= intervals[i][1]:
+                intervals[i][1] = max(intervals[i][1],intervals[j][1])
+                intervals.pop(j)
             else:
-                output.append(intervals[pointer_2])
-                pointer_1+=1
+                i+=1
+                j+=1            
             
-            pointer_2+=1
         
+        return intervals
 
-        return output
-
-        # SC -> O(N)
+        # SC -> O(1)
         # TC -> O(N Log N)
 
 
