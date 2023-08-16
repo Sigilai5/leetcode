@@ -13,12 +13,12 @@ class Solution:
         output = ""
         while heap:
             count, char = heapq.heappop(heap)
-            new_str = char * count
-            output+=new_str
+            output+=char * count
+            
+        return output[::-1]
 
-        output = output[::-1]
-
-        return output
+        # TC -> O(N Log k)
+        # SC -> O(N)
         
 
         # create a map
