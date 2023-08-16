@@ -7,20 +7,24 @@ class Solution:
         for num in nums:
             nums_count[num] = nums_count.get(num,0)+1
         
-        nums_list = [(num,count) for num,count in nums_count.items()]
+        heap = []
 
-        nums_list.sort(key=lambda x: x[1], reverse=True)
+        for num, count in nums_count.items():
+            heapq.heappush(heap,(-count,num))
 
         output = []
 
-        for i in range(0,k):
-            output.append(nums_list[i][0])
+      
         
-
+        for i in range(k):
+            count,num = heapq.heappop(heap)
+            output.append(num)
+        
         return output
 
+
         # SC -> O(N)
-        # TC -> O(N Log N)
+        # TC -> O(N Log k)
 
 
         # initialize a map
