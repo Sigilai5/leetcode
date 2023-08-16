@@ -13,18 +13,26 @@ class Solution:
         if not root:
             return root
         
+        queue = deque()
+        queue.append(root)
 
-        if root.left:
-            root.left.next = root.right
+        while queue:
+            for i in range(len(queue)):
+                current_level = queue.popleft()
+                
+                if current_level.left:
+                    current_level.left.next = current_level.right
+                
+                if current_level.right and current_level.next:
+                    current_level.right.next = current_level.next.left
+            
+                if current_level.left:
+                    queue.append(current_level.left)
+                
+                if current_level.right:
+                    queue.append(current_level.right)
         
-        if root.right and root.next:
-            root.right.next = root.next.left
-        
-        self.connect(root.left)
-        self.connect(root.right)
-
-
         return root
-        
-        # SC -> O(1), However if we include the recursion stack frames it would be O(N)
-        # TC -> O(N)
+    
+    # SC -> O(N)
+    # TC -> O(N)
