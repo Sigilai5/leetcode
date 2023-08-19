@@ -21,6 +21,9 @@ class Solution:
         
 
         return start+symbol_value[s[-1]]
+
+    # SC -> O(1)
+    # TC -> O(N)
              
 
 
