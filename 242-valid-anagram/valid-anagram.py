@@ -5,13 +5,9 @@ class Solution:
         
         s_count, t_count = {},{}
 
-        for char in s:
-            s_count[char] = s_count.get(char,0)+1
-        
-
-        for char in t:
-            t_count[char] = t_count.get(char,0)+1
-
+        for i in range(len(s)):
+            s_count[s[i]] = s_count.get(s[i], 0) + 1
+            t_count[t[i]] = t_count.get(t[i], 0) + 1
         
 
         if s_count == t_count:
