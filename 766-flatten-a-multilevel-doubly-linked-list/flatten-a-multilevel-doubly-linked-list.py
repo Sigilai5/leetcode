@@ -6,13 +6,26 @@ class Node:
         self.prev = prev
         self.next = next
         self.child = child
+
+        stack = []
+
+        1---2---3---7---8---11--12--9---10--4---5---6--NULL
+                        
+                        
+                    
+
+        
+
+        output = [1,2,3,7,8,11,12,9,10,4,5,6]
 """
+
 
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        if head is None:
+        if not head:
             return head
-        stack = []  # LIFO
+
+        stack = [] # LIFO
         curr = head
 
         while curr:
@@ -20,16 +33,20 @@ class Solution:
                 if curr.next:
                     stack.append(curr.next)
                 curr.next = curr.child
-                curr.child.prev = curr
+                curr.next.prev = curr
                 curr.child = None
             
-            if curr.next == None and len(stack) != 0:
+            if curr.next is None and len(stack) > 0:
                 curr.next = stack.pop()
                 curr.next.prev = curr
-                curr.child = None 
-
-            curr = curr.next
+                curr.child = None
+            
+            curr= curr.next
         
         return head
-                
+
+        # SC -> O(N)
+        # TC -> O(N)
+        
+
         
