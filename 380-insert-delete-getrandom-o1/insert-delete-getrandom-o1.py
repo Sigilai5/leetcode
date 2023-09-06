@@ -1,4 +1,3 @@
-import random
 class RandomizedSet:
 
     def __init__(self):
@@ -22,9 +21,8 @@ class RandomizedSet:
         
 
     def getRandom(self) -> int:
-        list_items = list(self.unique)
-        random_index = random.randint(0, len(list_items) - 1)
-        return list_items[random_index]
+        num_list = list(self.unique)
+        return random.choice(num_list)
         
 
 
