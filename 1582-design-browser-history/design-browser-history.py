@@ -31,8 +31,8 @@
 # USING A LINKED LIST
 
 class ListNode:
-    def __init__(self,val):
-        self.val = val
+    def __init__(self,page):
+        self.page = page
         self.prev = None
         self.next = None
 
@@ -40,20 +40,22 @@ class BrowserHistory:
 
     def __init__(self, homepage: str):
         self.dummy = ListNode(homepage)
-        self.curr = self.dummy
+        self.curr = self.dummy   
         
     def visit(self, url: str) -> None:
         node = ListNode(url)
         self.curr.next = node
         node.prev = self.curr
         self.curr = node
+        
 
     def back(self, steps: int) -> str:
         for _ in range(steps):
             if self.curr.prev != None:
                 self.curr = self.curr.prev
         
-        return self.curr.val
+        return self.curr.page
+       
         
 
     def forward(self, steps: int) -> str:
@@ -61,7 +63,8 @@ class BrowserHistory:
             if self.curr.next != None:
                 self.curr = self.curr.next
         
-        return self.curr.val
+        return self.curr.page
+       
 
 # TC -> O(N)
 # SC -> O(N)
