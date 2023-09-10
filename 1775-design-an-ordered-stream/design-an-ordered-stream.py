@@ -1,18 +1,18 @@
 class OrderedStream:
 
     def __init__(self, n: int):
-        self.stream = ["?"] * n # ["?","?","?","?","?"]
-        self.pointer = 0        
+        self.stream = {}
+        self.pointer = 1       
 
     def insert(self, idKey: int, value: str) -> List[str]:
-        self.stream[idKey - 1] = value # ["?","?","CCCCC","?","?"]
+        self.stream[idKey] = value 
         output = []
 
-        while self.pointer < len(self.stream) and self.stream[self.pointer] != "?":
-            output.append(self.stream[self.pointer])
+        while self.pointer in self.stream:
+            output.append(self.stream.get(self.pointer))
             self.pointer+=1
-
-        return output 
+        
+        return output
 
     # SC -> O(N)
     # TC -> O(N)
