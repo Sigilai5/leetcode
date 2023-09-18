@@ -1,10 +1,9 @@
 class Solution:
     def getKth(self, lo: int, hi: int, k: int) -> int:
-        num_list = []
         powers = {}
 
-        for x in range(lo,hi+1):
-            power = x
+        for i in range(lo,hi+1):
+            power = i
             steps = 0
 
             while power != 1:
@@ -15,10 +14,16 @@ class Solution:
                     power = 3 * power + 1
                     steps+=1
             
-            num_list.append(x)
-            powers[x] = steps
+            powers[i] = steps
         
 
-        num_list.sort(key = lambda x:powers[x])
+        heap = [(power, num) for num,power in powers.items()]
+        heapq.heapify(heap)
 
-        return num_list[k - 1]
+        # for num, power in powers.items():
+        #     heapq.heappush(heap,(power,num))
+
+        for i in range(k-1):
+            heapq.heappop(heap)
+        
+        return heapq.heappop(heap)[1]
