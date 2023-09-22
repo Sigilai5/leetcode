@@ -1,15 +1,20 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        groups = defaultdict(list)
+        special = []
+        if strs == [""]:
+            special.append(strs)
+            return special
+        if len(strs) == 1:
+            special.append(strs)
+            return special
 
-        for char in strs:
-            key = "".join(sorted(char))
-            groups[key].append(char)
+            
 
+        output = defaultdict(list)
+
+        for word in strs:
+            sorted_word = "".join(sorted(word))
+            output[sorted_word].append(word)
         
-
-        return groups.values()
-
-        # SC -> O(N)
-        # TC -> O(NLogN)
+        return output.values()
         
