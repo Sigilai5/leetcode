@@ -1,11 +1,11 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        if len(intervals) == 0 or len(intervals) == 1:
+        if len(intervals) <= 1:
             return intervals
-        
-        intervals.sort(key=lambda x:x[0])
 
-        i,j = 0, 1
+        intervals.sort(key= lambda x:x[0])
+
+        i,j = 0,1
 
         while j < len(intervals):
             if intervals[j][0] <= intervals[i][1]:
@@ -13,16 +13,13 @@ class Solution:
                 intervals.pop(j)
             else:
                 i+=1
-                j+=1            
-            
+                j+=1
         
         return intervals
+
+
 
         # SC -> O(1)
         # TC -> O(N Log N)
 
-
-
-
-        
         
