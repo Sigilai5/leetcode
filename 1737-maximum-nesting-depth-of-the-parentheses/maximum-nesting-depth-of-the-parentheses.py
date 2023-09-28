@@ -1,16 +1,17 @@
 class Solution:
     def maxDepth(self, s: str) -> int:
-        if s == "":
+        if s == "" or (len(s) == 1 and (s != '(' or s!= ')')) :
             return 0
         
-        stack = []
+        
+        current_depth = 0
         max_depth = 0
 
         for char in s:
             if char == '(':
-                stack.append(char)
-                max_depth = max(max_depth,len(stack))
+                current_depth+=1
+                max_depth = max(max_depth,current_depth)
             elif char == ')':
-                stack.pop()
+                current_depth-=1
 
         return max_depth        
