@@ -1,39 +1,31 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        if len(nums) == 1:
+        if len(nums) == 1 and nums[0] == k:
             return nums
 
-        nums_count = {}
+        count = {}
+
         for num in nums:
-            nums_count[num] = nums_count.get(num,0)+1
-        
-        heap = []
+            count[num] = count.get(num,0)+1
 
-        for num, count in nums_count.items():
-            heapq.heappush(heap,(-count,num))
+        nums_elements = list(count.keys())
 
-        output = []
+        nums_elements.sort(key= lambda x: count[x],reverse=True)
 
-      
-        
-        for i in range(k):
-            count,num = heapq.heappop(heap)
-            output.append(num)
-        
-        return output
+        return nums_elements[:k]
 
 
+        # TC -> O(NLogN)
         # SC -> O(N)
-        # TC -> O(N Log k)
+
+       
 
 
-        # initialize a map
-        # loop through nums and get num and count of num
-        # initalize a list
-        # loop through map and store num and count in tuple inside list
-        # sort list by count of num,and reverse
-        # initalize empty output list
-        # loop through former list k times while appending num
-        # return output list
-
+        # check if length is 1 and k is 1 then return nums if true
+        # initialize a dictionary
+        # count the occurence of each number in the dictionary where key is      the number itself and value is the count
+        # put the key values in an emmpty list
+        # sort the dictionary values in descending order
+        # initialize an empty list:
+        # loop thorugh the list k times and append the values in the list
         
