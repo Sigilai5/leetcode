@@ -8,15 +8,23 @@ class Solution:
         for num in nums:
             count[num] = count.get(num,0)+1
 
-        nums_elements = list(count.keys())
+        heap = [(-value,key) for key,value in count.items()]
 
-        nums_elements.sort(key= lambda x: count[x],reverse=True)
+        heapq.heapify(heap)
 
-        return nums_elements[:k]
+        output = []
+
+        for _ in range(k):
+            if heap:
+                output.append(heapq.heappop(heap)[1])
+
+        return output
 
 
-        # TC -> O(NLogN)
+        # TC -> O(N)
         # SC -> O(N)
+
+        
 
        
 
