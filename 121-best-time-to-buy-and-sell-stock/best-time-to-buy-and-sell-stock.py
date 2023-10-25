@@ -12,6 +12,9 @@ class Solution:
                 sell+=1
         
         return best_profit
+
+        # SC -> O(1)
+        # TC -> O(N)
         
 
 
