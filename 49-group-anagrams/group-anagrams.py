@@ -1,12 +1,17 @@
-# Alternate solution with time complexity of O(n*k) without sorting
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        ans = defaultdict(list)
-        for s in strs:
-            count = [0]*26
-            for c in s:
-                count[ord(c) - ord('a')] += 1
 
-            ans[tuple(count)].append(s)
-                
-        return ans.values()
+        output = defaultdict(list)
+
+        for st in strs:
+            sorted_st = "".join(sorted(st))
+            output[sorted_st].append(st)
+
+
+
+        return output.values()
+
+
+        # TC -> O(NLogN)
+        # SC -> O(N)
+        
