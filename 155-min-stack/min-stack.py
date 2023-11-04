@@ -25,6 +25,9 @@ class MinStack:
         return self.stack[-1][1]
         
 
+        # TC -> O(1)
+        # SC -> O(N)
+
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
