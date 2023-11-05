@@ -10,9 +10,7 @@ class Solution:
             return root
 
 
-        hold = root.left
-        root.left = root.right
-        root.right = hold
+        root.left, root.right = root.right, root.left
 
         self.invertTree(root.left)
         self.invertTree(root.right)
