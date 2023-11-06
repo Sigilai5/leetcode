@@ -10,10 +10,17 @@ class Solution:
                 for i in range(2):
                     stack.pop()
             
-        return "".join(stack)
 
-        # SC -> O(N)
+        output = ""
+
+        while stack:
+            output+=stack.pop()
+
+        
+        return output[::-1]
+
         # TC -> O(N)
+        # SC -> O(N)
 
 
         # initialize a stack
