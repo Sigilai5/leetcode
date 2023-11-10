@@ -7,14 +7,22 @@ class Solution:
         for num in nums:
            nums_count[num] = nums_count.get(num,0)+1
 
-        nums_element = list(nums_count.keys())
+        heap = []
 
-        nums_element.sort(key=lambda x: nums_count[x],reverse=True)
+        for key, value in nums_count.items():
+            heap.append((-value,key))
 
-        return nums_element[:k]
+        heapq.heapify(heap)
 
+        output = []
+
+        for _ in range(k):
+            if heap:
+                output.append(heapq.heappop(heap)[1])
+
+        return output
 
         # SC -> O(N)
-        # TC -> O(N Log N)
+        # TC -> O(N Log K)
             
         
