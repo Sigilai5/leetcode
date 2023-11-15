@@ -9,13 +9,15 @@ class KthLargest:
     def add(self, val: int) -> int:
         heapq.heappush(self.nums,val) # [2,3,4,5,8]
 
-        while len(self.nums) != self.k:
+        while self.nums and len(self.nums) != self.k:
             heapq.heappop(self.nums)
         
         # [2,3,4]
 
         return self.nums[0]
         
+        # SC -> O(N)
+        # TC -> O(N Log K)
         
         
 
