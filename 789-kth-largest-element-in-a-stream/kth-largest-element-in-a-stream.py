@@ -11,6 +11,9 @@ class KthLargest:
         self.nums.sort()
 
         return self.nums[::-1][self.k - 1]
+
+        # SC -> O(N)
+        # TC -> O(N log N)
         
 
 
