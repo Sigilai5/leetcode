@@ -4,3 +4,5 @@ class Solution:
 
         return s_output == s_output[::-1]
         
+        # SC -> O(N)
+        # TC -> O(N)
