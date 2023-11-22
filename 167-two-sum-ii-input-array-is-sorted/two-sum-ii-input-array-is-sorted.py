@@ -2,8 +2,6 @@ class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         i,j = 0, len(numbers) - 1
 
-        result = []
-
         while i < j:
             total_sum = numbers[i] + numbers[j]
             if total_sum > target:
@@ -11,12 +9,9 @@ class Solution:
             elif total_sum < target:
                 i+=1
             else:
-                result.append(i+1)
-                result.append(j+1)
-                i+=1
-                j-=1
+                return [i+1,j+1]
         
-        return result
+        return [1,2]
 
 
     # SC -> O(1)
