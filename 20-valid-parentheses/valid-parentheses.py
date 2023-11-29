@@ -1,18 +1,17 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack = []
-
-        for char in s:
-            if char == '(' or char == '[' or char == '{':
-                stack.append(char)
-            elif stack and stack[-1] == '(' and char == ')':
-                stack.pop(-1)
-            elif stack and stack[-1] == '[' and char == ']':
-                stack.pop(-1)
-            elif stack and stack[-1] == '{' and char  == '}':
-                stack.pop(-1)
+        while s:
+            if "()" in s:
+                s = s.replace("()","")
+            elif "[]" in s:
+                s = s.replace("[]","")
+            elif "{}" in s:
+                s = s.replace("{}","")
             else:
                 return False
         
-        return True if len(stack) == 0 else  False
+        return True
+
+        # SC -> O(N)
+        # TC -> O(M * K)
         
