@@ -23,7 +23,7 @@ class RandomizedSet:
         
 
     # SC -> O(N)
-    # TC -> O(1)
+    # TC -> O(N)
 
 # Your RandomizedSet object will be instantiated and called as such:
 # obj = RandomizedSet()
