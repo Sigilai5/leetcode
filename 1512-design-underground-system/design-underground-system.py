@@ -4,46 +4,48 @@ class UndergroundSystem:
         self.checkins = {}
         self.averages = {}
         
+
     def checkIn(self, id: int, stationName: str, t: int) -> None:
-        self.checkins[id] = self.Checkins(id,stationName,t)
+        self.checkins[id] = self.Checkin(id,stationName,t)
         
+
     def checkOut(self, id: int, stationName: str, t: int) -> None:
         timeDif = t - self.checkins[id].t
-        stations = self.checkins[id].stationName + '->' + stationName
-        average = self.averages.get(stations,self.Average())
+        stations = self.checkins[id].startStation + "," + stationName
+        average = self.averages.get(stations,self.Averages())
         average.updateAverage(timeDif)
         self.averages[stations] = average
+
+        self.checkins.pop(id)
         
 
     def getAverageTime(self, startStation: str, endStation: str) -> float:
-        stations = startStation + '->' + endStation
+        stations = startStation + "," + endStation
         return self.averages[stations].getAverage()
 
 
-    class Checkins:
-
-        def __init__(self,id: int, stationName: str, t:int):
+    class Checkin:
+        def __init__(self,id:int ,stationName:str,t:int):
             self.id = id
-            self.stationName = stationName
+            self.startStation = stationName
             self.t = t
 
     
-    class Average:
-
+    class Averages:
         def __init__(self):
-            self.totalTime = 0
+            self.timeTaken = 0
             self.customers = 0
-        
+
         def updateAverage(self,timeDif):
-            self.totalTime += timeDif
-            self.customers += 1
+            self.timeTaken+=timeDif
+            self.customers+=1
         
         def getAverage(self):
-            return self.totalTime/self.customers
+            return self.timeTaken / self.customers
 
-    # SC -> O(N + M)
-    # TC -> O(1)
-        
+
+        # TC -> O(1)
+        # SC -> O(M + N)
 
 
 # Your UndergroundSystem object will be instantiated and called as such:
