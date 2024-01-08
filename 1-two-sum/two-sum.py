@@ -1,13 +1,17 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        for i in range(len(nums)):
-            for j in range(len(nums)):
-                if i != j and nums[i] + nums[j] == target:
-                    return [i,j]
+        check = {}
+
+        for index, item in enumerate(nums):
+            dif = target - item
+            if dif in check:
+                return [check.get(dif), index]
+
+            check[item] = index
         
+
         return [-1,-1]
 
-
-    # TC -> O(N*N)
-    # SC -> O(1)
+        # SC -> O(N)
+        # TC -> O(N)
         
