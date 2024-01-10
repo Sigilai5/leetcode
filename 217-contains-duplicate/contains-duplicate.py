@@ -1,13 +1,16 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        unique = {}
+        hold  = set()
 
         for num in nums:
-            if num in unique:
+            if num in hold:
                 return True
-            
-            unique[num] = num
-        
+            else:
+                hold.add(num)
 
+        
         return False
+
+        # SC -> O(N)
+        # TC -> O(N)
         
