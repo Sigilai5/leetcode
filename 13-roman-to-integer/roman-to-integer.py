@@ -1,30 +1,37 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-        # s = "MCMXCIV"
-        # 0 + 1000 = 1000
-        # 1000 - 100 = 900
-        # 900 + 1000 = 1900
-        # 1900 - 10 = 1890
-        # 1890 + 100 = 1990
-        # 1990 - 1 = 1989
-        # 1989 + 5  = 1994 
+        roman_num = {
+            "M":1000,
+            "CM":900,
+            "D":500,
+            "CD":400,
+            "C":100,
+            "XC":90,
+            "L":50,
+            "XL":40,
+            "X":10,
+            "IX":9,
+            "V":5,
+            "IV":4,
+            "I":1}
 
-        symbol_value =  {"M":1000,"D":500,"C":100,"L":50,"X":10,"V":5,"I":1}
+        output = 0
 
-        start = 0
+        if len(s) == 1: return roman_num.get(s)
 
-        for i in range(len(s) - 1):
-            if symbol_value[s[i]] >= symbol_value[s[i+1]]: 
-                start += symbol_value[s[i]]
+        for i in range(1,len(s)):
+            if roman_num.get(s[i-1]) < roman_num.get(s[i]):
+                output-=roman_num.get(s[i-1])
             else:
-                start -= symbol_value[s[i]]
-        
-
-        return start+symbol_value[s[-1]]
-
-    # SC -> O(1)
-    # TC -> O(N)
-             
+                output+=roman_num.get(s[i-1])
 
 
+        return output + roman_num.get(s[i])
+
+
+        # SC -> O(1)
+
+        # TC -> O(N)
+
+            
         
