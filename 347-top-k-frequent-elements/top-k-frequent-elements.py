@@ -1,28 +1,19 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        if len(nums) == 1: return nums
-
-        nums_count = {}
+        top_k = {}
 
         for num in nums:
-           nums_count[num] = nums_count.get(num,0)+1
+            top_k[num] = top_k.get(num,0)+1
 
-        heap = []
+        
+        top_keys = list(top_k.keys())
 
-        for key, value in nums_count.items():
-            heap.append((-value,key))
+        top_keys.sort(key = lambda x: top_k[x], reverse=True) 
 
-        heapq.heapify(heap)
-
-        output = []
-
-        for _ in range(k):
-            if heap:
-                output.append(heapq.heappop(heap)[1])
-
-        return output
+        return top_keys[:k] 
 
         # SC -> O(N)
-        # TC -> O(N Log K)
-            
+        # TC -> O(N Log N)
+
+        
         
