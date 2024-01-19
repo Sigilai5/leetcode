@@ -1,20 +1,20 @@
 class Solution:
     def fizzBuzz(self, n: int) -> List[str]:
-        output = []
+        result = []
 
         for i in range(1,n+1):
-            if i%3 == 0 and i%5 == 0:
-                output.append("FizzBuzz")
-            elif i%3 == 0:
-                output.append("Fizz")
-            elif i%5 == 0:
-                output.append("Buzz")
+            if i % 15 == 0:
+                result.append("FizzBuzz")
+            elif i % 3 == 0:
+                result.append("Fizz")
+            elif i % 5 == 0:
+                result.append("Buzz")
             else:
-                output.append(str(i))
-        
-        return output
+                result.append(str(i))
 
-        # TC -> O(N)
+        
+        return result
+        
+
         # SC -> O(N)
-
-        
+        # TC -> O(N)
