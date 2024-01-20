@@ -18,5 +18,8 @@ class Solution:
 
         return intervals
 
+        # TC -> O(N Log N)
+        # SC -> O(1)
+
         
         
