@@ -8,5 +8,8 @@ class Solution:
             j+=1
 
         nums1.sort()
+
+        # SC -> (1)
+        # TC -> O(N Log N)
         
         
