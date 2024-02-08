@@ -1,31 +1,29 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        # handle the edges cases 
-        
-        number_of_island = 0
-        ROWS, COLS = len(grid), len(grid[0])
-                
-        #exploration - recursive dfs
-        def explore(row, col):
-            if row < 0 or col < 0 or row >= ROWS or col >= COLS or grid[row][col] != "1":
-                return 
-            #mark 
-            grid[row][col] = "0"
-            
-            offset = [(-1, 0), (1, 0), (0, 1), (0, -1)]
-            for nei_offset in offset:
-                explore(row +  nei_offset[0], col + nei_offset[1]) 
-            
-        
-        for r in range(ROWS):
-            for c in range(COLS):
-                if grid[r][c] is "1":
-                    explore(r, c)
-                    number_of_island += 1
+        count = 0
+        col = len(grid)
+        rows = len(grid[0])
 
+        for i in range(col):
+            for j in range(rows):
+                if grid[i][j] == '1':
+                    count+=self.sink(i,j,grid)
         
-        return number_of_island
+        return count
         
 
+        
+    def sink(self, i,j,grid):
+        if i < 0 or i >= len(grid) or j < 0 or j >= len(grid[i]) >= 0 or grid[i][j] == '0':   
+            return 0
+     
+        grid[i][j] = '0'
+        self.sink(i+1,j,grid)
+        self.sink(i-1,j,grid)
+        self.sink(i,j+1,grid)
+        self.sink(i,j-1,grid)
+        return 1
 
 
+    # SC -> O(1)
+    # TC -> O(N*M)
