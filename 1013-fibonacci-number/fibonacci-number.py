@@ -10,5 +10,5 @@ class Solution:
             return self.fib(n-1) + self.fib(n-2)
 
         # SC -> O(1), if ignoring recursion stack frames
-        # TC -> O(2^N)
+        # TC -> O(2^N),exponential
         
