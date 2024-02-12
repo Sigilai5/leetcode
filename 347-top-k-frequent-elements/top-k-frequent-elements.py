@@ -5,17 +5,28 @@ class Solution:
         
         top_k = {}
 
+        # O(N)
         for num in nums:
             top_k[num] = top_k.get(num,0)+1  
 
-        top_keys = list(top_k.keys())
-        
-        top_keys.sort(key=lambda x: top_k[x],reverse=True)
+        heap = []
 
+        # O(N)
+        for key,value in top_k.items():
+            heap.append((-value,key)) 
 
-        return top_keys[:k]
+        # O(Log N)
+        heapq.heapify(heap)
 
-        # TC -> O(N Log N)
+        result = []
+
+        for _ in range(k):
+            if heap:
+                result.append(heapq.heappop(heap)[1])
+
+        return result
+
         # SC -> O(N)
+        # O(n + k * log(n))
 
         
