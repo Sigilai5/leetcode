@@ -1,8 +1,7 @@
 class Solution:
     def getKth(self, lo: int, hi: int, k: int) -> int:
         nums = [i for i in range(lo,hi+1)]
-
-        count = {}
+        heap = []
 
         for num in nums:
             steps = 0
@@ -15,14 +14,26 @@ class Solution:
                 else:
                     x = 3 * x + 1
                     steps+=1
-            count[num] = steps
-        
-        nums.sort(key = lambda x: count[x])
+            heap.append((steps,num))
 
-    
-        return nums[k-1]
+        heapq.heapify(heap)
 
-        # TC -> O(N Logn N)
+        for i in range(k-1):
+            if heap:
+                heapq.heappop(heap)
+
+        return heapq.heappop(heap)[1]
+
+        # TC -> O(N Log K)
         # SC -> O(N)
-            
+
+
+
+        
+       
+        
+        
+    
+
+       
         
