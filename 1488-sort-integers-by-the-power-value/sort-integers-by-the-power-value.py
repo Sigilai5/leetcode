@@ -1,29 +1,28 @@
 class Solution:
     def getKth(self, lo: int, hi: int, k: int) -> int:
-        powers = {}
+        nums = [i for i in range(lo,hi+1)]
 
-        for i in range(lo,hi+1):
-            power = i
+        count = {}
+
+        for num in nums:
             steps = 0
+            x = num 
 
-            while power != 1:
-                if power % 2 == 0:
-                    power = power / 2
+            while x != 1:
+                if x % 2 == 0:
+                    x = x / 2
                     steps+=1
                 else:
-                    power = 3 * power + 1
+                    x = 3 * x + 1
                     steps+=1
+            count[num] = steps
+        
+        nums.sort(key = lambda x: count[x])
+
+    
+        return nums[k-1]
+
+        # TC -> O(N Logn N)
+        # SC -> O(N)
             
-            powers[i] = steps
         
-
-        heap = [(power, num) for num,power in powers.items()]
-        heapq.heapify(heap)
-
-        # for num, power in powers.items():
-        #     heapq.heappush(heap,(power,num))
-
-        for i in range(k-1):
-            heapq.heappop(heap)
-        
-        return heapq.heappop(heap)[1]
