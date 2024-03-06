@@ -1,10 +1,12 @@
 class MagicDictionary:
 
     def __init__(self):
-        self.words = []        
+        self.words = [] 
+        
 
     def buildDict(self, dictionary: List[str]) -> None:
-        self.words = dictionary        
+        for word in dictionary:
+            self.words.append(word)
 
     def search(self, searchWord: str) -> bool:
         for word in self.words:
@@ -17,6 +19,7 @@ class MagicDictionary:
                 if count == 1: return True
         
         return False
+
         
 
 
