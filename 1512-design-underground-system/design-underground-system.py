@@ -1,51 +1,52 @@
 class UndergroundSystem:
 
     def __init__(self):
-        self.checkins = {}
+        self.journeys = {}
         self.averages = {}
         
 
     def checkIn(self, id: int, stationName: str, t: int) -> None:
-        self.checkins[id] = self.Checkin(id,stationName,t)
-        
+        self.journeys[id] = self.Journey(id,stationName,t)        
 
     def checkOut(self, id: int, stationName: str, t: int) -> None:
-        timeDif = t - self.checkins[id].t
-        stations = self.checkins[id].startStation + "," + stationName
-        average = self.averages.get(stations,self.Averages())
-        average.updateAverage(timeDif)
+        timeDif = t - self.journeys[id].t
+        stations = self.journeys[id].stationName + "," + stationName
+
+        average = self.averages.get(stations,self.Average())
+
+        average.updateAverage(timeDif)    
+
         self.averages[stations] = average
 
-        self.checkins.pop(id)
-        
+        self.journeys.pop(id)    
 
     def getAverageTime(self, startStation: str, endStation: str) -> float:
         stations = startStation + "," + endStation
         return self.averages[stations].getAverage()
 
-
-    class Checkin:
-        def __init__(self,id:int ,stationName:str,t:int):
-            self.id = id
-            self.startStation = stationName
-            self.t = t
-
     
-    class Averages:
+    class Journey:
+        def __init__(self,id: int,stationName: str,t: int):
+            self.id = id
+            self.stationName = stationName
+            self.t = t
+    
+    class Average:
         def __init__(self):
-            self.timeTaken = 0
+            self.totalTime = 0
             self.customers = 0
 
         def updateAverage(self,timeDif):
-            self.timeTaken+=timeDif
-            self.customers+=1
-        
+            self.totalTime += timeDif
+            self.customers += 1
+
         def getAverage(self):
-            return self.timeTaken / self.customers
+            return self.totalTime / self.customers
 
+# SC -> O(N+M)
+# TC -> O(1)
 
-        # TC -> O(1)
-        # SC -> O(M + N)
+        
 
 
 # Your UndergroundSystem object will be instantiated and called as such:
