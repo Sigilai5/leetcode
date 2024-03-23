@@ -1,22 +1,22 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int[] result = new int[2];
+        HashMap<Integer,Integer> result = new HashMap();
 
         for(int i = 0; i < nums.length;i++){
-            for(int j = i + 1; j < nums.length;j++){ 
-                if(nums[i] + nums[j] == target){
-                    result[0] = i;
-                    result[1] = j;
-                }
+            int dif = target - nums[i];
+
+            if(result.containsKey(dif)){
+                return new int[] {i,result.get(dif)};
             }
+
+            result.put(nums[i],i);
+
         }
 
-        return result;
-
+        return new int[] {};
         
     }
 }
 
-
 // SC -> O(1)
-// TC -> O(N*N)
+// TC -> O(N)
