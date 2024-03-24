@@ -4,16 +4,17 @@ class Solution {
             return false;
         }
 
-        int[] s_store = new int[26];
-        int[] t_store = new int[26];
+        int[] store = new int[26];
 
 
         for(int i = 0; i < s.length();i++){
-            s_store[s.charAt(i) - 'a']++;
-            t_store[t.charAt(i) - 'a']++;
+            store[s.charAt(i) - 'a']++;
+            store[t.charAt(i) - 'a']--;
         }
 
-        return Arrays.equals(s_store,t_store);           
+        int[] compare = new int[26];
+
+        return Arrays.equals(store,compare);           
 
         
     }
