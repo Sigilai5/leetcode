@@ -1,18 +1,23 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer,Integer>  check = new HashMap();
 
         for(int i = 0; i < nums.length;i++){
-            for(int j = i + 1; j < nums.length;j++){
-                if(nums[i] + nums[j] == target){
-                    return new int[] {i,j};
-                }
+            int dif = target - nums[i];
+
+            if(check.containsKey(dif)){
+                return new int[] {i,check.get(dif)};
             }
+
+            check.put(nums[i],i);
         }
+
 
         return new int[] {};
         
     }
 }
 
-// SC - O(1)
-// TC -> O(N*N)
+// SC -> O(N)
+// TC -> O(N)
+
