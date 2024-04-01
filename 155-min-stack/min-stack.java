@@ -1,16 +1,20 @@
 class MinStack {
     private Stack<int[]> stack;
-
+   
+ 
     public MinStack() {
-        stack = new Stack();        
+        stack = new Stack();
     }
     
     public void push(int val) {
         if(stack.isEmpty()){
-            stack.push(new int[] {val,val});
+            int[] arr = new int[] {val,val};
+            stack.push(arr);
         }else{
             int lastMin = stack.peek()[1];
-            stack.push(new int[] {val,Math.min(lastMin,val)});
+            int minVal = Math.min(lastMin,val);
+            int[] arr = new int[] {val,minVal};
+            stack.push(arr);
         }
         
     }
@@ -18,22 +22,28 @@ class MinStack {
     public void pop() {
         if(!stack.isEmpty()){
             stack.pop();
-        }       
+        }
+               
     }
     
     public int top() {
-       if(!stack.isEmpty()){
-        return stack.peek()[0];
-       }
-       return -1;
+        if(!stack.isEmpty()){
+           int topElement = stack.peek()[0];
+           return topElement;
+        }
+
+        return -1;
+        
     }
     
     public int getMin() {
         if(!stack.isEmpty()){
-            return stack.peek()[1];
+            int getMin = stack.peek()[1];
+            return getMin;
         }
 
         return -1;
+        
     }
 }
 
@@ -47,4 +57,5 @@ class MinStack {
  * obj.pop();
  * int param_3 = obj.top();
  * int param_4 = obj.getMin();
- */
+ *
+ **/
