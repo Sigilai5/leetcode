@@ -1,46 +1,48 @@
 class RandomizedSet {
-
-    HashSet<Integer> unique;
+    HashMap<Integer,Integer> valIndex;
+    ArrayList<Integer> vals;
 
     public RandomizedSet() {
-        unique = new HashSet();        
+        valIndex = new HashMap();
+        vals = new ArrayList();
     }
     
     public boolean insert(int val) {
-        if(unique.contains(val)) return false;
+        if(valIndex.containsKey(val)) return false;
+        valIndex.put(val,vals.size());
+        vals.add(val);
 
-        unique.add(val);                
-    
         return true;
     }
     
     public boolean remove(int val) {
-        if(!unique.contains(val)) return false;
+        if(!valIndex.containsKey(val)) return false;
 
-        unique.remove(val);
+        int getLastItem = vals.get(vals.size() - 1);
+        int getKey = valIndex.get(val);
 
-        return true;        
+        // Delete from dictionary
+        valIndex.put(getLastItem,getKey);
+        valIndex.remove(val);
+
+        // delete from list
+        vals.set(getKey, getLastItem);
+        vals.remove(vals.size() - 1);
+
+        return true;
+        
     }
     
     public int getRandom() {
-        ArrayList<Integer> listItems = new ArrayList();
-
-        for(Integer item: unique){
-            listItems.add(item);
-        }
-
         Random random = new Random();
 
-        int randNumber = random.nextInt(listItems.size());
-
-        return listItems.get(randNumber);
+        return vals.get(random.nextInt(vals.size()));
         
     }
 }
 
-
-// SC -> O(N)
-// TC -> O(N)
+// SC => O(N)
+// TC -> O(1)
 
 /**
  * Your RandomizedSet object will be instantiated and called as such:
