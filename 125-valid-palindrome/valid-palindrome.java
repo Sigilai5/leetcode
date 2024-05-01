@@ -1,25 +1,26 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        String sLower = s.toLowerCase();
-        String validS = sLower.replaceAll("\\s+","");
-        String result = validS.replaceAll("[^A-Za-z0-9]","");
+        String sPace = s.replaceAll("\\s+","");
+        String sAlpha = sPace.replaceAll("[^A-Za-z0-9]","");
+        String sLower = sAlpha.toLowerCase();
 
         int i = 0;
-        int j = result.length() - 1;
+        int j = sLower.length() - 1;
 
         while(i < j){
-            if(result.charAt(i) == result.charAt(j)){
-                i+=1;
-                j-=1;
-            }else{
+            if(sLower.charAt(i) != sLower.charAt(j)){
                 return false;
+            } else{
+               i+=1;
+               j-=1;
             }
-
         }
 
         return true;
         
     }
+
+
 }
 
 // SC -> O(N)
