@@ -1,35 +1,53 @@
-import java.util.LinkedList;
-import java.util.Queue;
-
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
 class Solution {
     public int maxDepth(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
+        if(root == null) return 0;
 
-        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList();
+
         queue.add(root);
+
         int maxDepth = 0;
 
-        while (!queue.isEmpty()) {
-            int levelSize = queue.size(); // Store the current size of the queue
+        while(!queue.isEmpty()){
+            
+            int levelSize = queue.size();
 
-            // Process all nodes at the current level
-            for (int i = 0; i < levelSize; i++) {
-                TreeNode node = queue.poll();
+            for(int i = 0; i < levelSize; i++){
+                TreeNode level = queue.poll();
 
-                if (node.left != null) {
-                    queue.add(node.left);
+                if(level.left != null){
+                    queue.add(level.left);
                 }
 
-                if (node.right != null) {
-                    queue.add(node.right);
+                if(level.right != null){
+                    queue.add(level.right);
                 }
+
             }
 
-            maxDepth++; // Increment depth after processing all nodes at the current level
+            maxDepth += 1;
         }
 
         return maxDepth;
+        
     }
 }
+
+
+// SC -> O(N)
+// TC -> O(N)
