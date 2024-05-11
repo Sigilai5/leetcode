@@ -24,11 +24,11 @@ class Solution {
         int maxDepth = 0;
 
         while(!queue.isEmpty()){
-            
+
             int levelSize = queue.size();
 
             for(int i = 0; i < levelSize; i++){
-                TreeNode level = queue.poll();
+                TreeNode level = queue.remove();
 
                 if(level.left != null){
                     queue.add(level.left);
