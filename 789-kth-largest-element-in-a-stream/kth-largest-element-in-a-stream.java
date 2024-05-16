@@ -8,6 +8,7 @@ class KthLargest {
         for(int num: nums){
             this.queue.add(num); 
         }
+        
     }
     
     public int add(int val) {
@@ -19,6 +20,9 @@ class KthLargest {
         
     }
 }
+
+// SC -> O(k)
+// TC -> O(N Log k)
 
 /**
  * Your KthLargest object will be instantiated and called as such:
