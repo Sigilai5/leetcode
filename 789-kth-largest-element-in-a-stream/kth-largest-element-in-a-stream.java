@@ -1,26 +1,24 @@
 class KthLargest {
     private int kLargest;
-    private List<Integer> numsList;
+    private PriorityQueue<Integer> queue;
 
     public KthLargest(int k, int[] nums) {
-        this.numsList = new ArrayList();
+        this.queue = new PriorityQueue();
         this.kLargest = k;
         for(int num: nums){
-            numsList.add(num);
+            this.queue.add(num); 
         }
-      
     }
     
     public int add(int val) {
-        this.numsList.add(val);
-        Collections.sort(this.numsList,Collections.reverseOrder());
+        this.queue.add(val);
+        while(!this.queue.isEmpty() && this.queue.size() != this.kLargest){
+            this.queue.poll();
+        }
+        return this.queue.peek();
         
-        return this.numsList.get(this.kLargest-1);
     }
 }
-
-// SC -> O(N)
-// TC -> O(N Log N)
 
 /**
  * Your KthLargest object will be instantiated and called as such:
