@@ -2,10 +2,13 @@ class Solution {
     public int lastStoneWeight(int[] stones) {
         PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)-> b - a); 
 
-        for(int stone: stones) pq.add(stone);
-        while(pq.size() > 1) pq.add(pq.poll() - pq.poll());
+        for(int stone: stones) pq.offer(stone);
+        while(pq.size() > 1) pq.offer(pq.poll() - pq.poll());
 
         return pq.poll();
         
     }
 }
+
+// SC -> O(N)
+// TC -> O(N Log N)
