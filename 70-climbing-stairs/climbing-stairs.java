@@ -5,16 +5,14 @@ class Solution {
         int a = 2;
         int b = 3;
 
-        // 1,2,3,5,8
-
         for(int i = 0; i < n - 3;i++){
-            int temp = a + b;
-            
+            int hold = a + b;
             a = b;
-            b = temp;
+            b = hold;
         }
-        
+
         return b;
+        
     }
 }
 
