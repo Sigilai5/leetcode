@@ -11,7 +11,7 @@ class KthLargest {
     
     public int add(int val) {
         this.pq.offer(val);
-        while(this.pq.size() != this.k){
+        while(this.pq.size() > this.k){
             this.pq.poll();
         }
 
