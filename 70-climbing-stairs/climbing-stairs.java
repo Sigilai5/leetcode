@@ -1,20 +1,17 @@
 class Solution {
     public int climbStairs(int n) {
-        if(n <= 3) return n;
+        if (n <= 2) return n;
 
-        int a = 2;
-        int b = 3;
+        int[] ways = new int[n+1];
 
-        for(int i = 0; i < n - 3;i++){
-            int hold = a + b;
-            a = b;
-            b = hold;
+        ways[1] = 1;
+        ways[2] = 2;
+
+        for(int i = 3; i <= n;i++){
+            ways[i] = ways[i - 1] + ways[i - 2];
         }
 
-        return b;
+        return ways[n];
         
     }
 }
-
-// SC -> O(1)
-// TC -> O(N)
