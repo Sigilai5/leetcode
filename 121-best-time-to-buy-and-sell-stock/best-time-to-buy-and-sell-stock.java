@@ -7,7 +7,7 @@ class Solution {
         int sell = 1;
 
         while(sell < prices.length){
-            if(prices[sell] < prices[buy]){
+            if(prices[sell] <= prices[buy]){
                 buy = sell;
             } else{
                 int profit = prices[sell] - prices[buy];
