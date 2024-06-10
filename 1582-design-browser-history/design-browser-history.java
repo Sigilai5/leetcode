@@ -9,7 +9,7 @@ class BrowserHistory {
     }
     
     public void visit(String url) {
-        while(this.pages.size() - 1 != this.current){
+        while(this.pages.size() - 1 > this.current){
             this.pages.remove(this.pages.size() - 1);
         }
 
