@@ -1,47 +1,51 @@
 class RandomizedSet {
-    HashMap<Integer,Integer> valIndex;
-    ArrayList<Integer> vals;
+    Map<Integer,Integer> val_index;
+    List<Integer> vals;
+    Random random;
 
     public RandomizedSet() {
-        valIndex = new HashMap();
-        vals = new ArrayList();
+        this.val_index = new HashMap<>();
+        this.vals = new ArrayList<>();
+        this.random = new Random();
     }
     
     public boolean insert(int val) {
-        if(valIndex.containsKey(val)) return false;
-        valIndex.put(val,vals.size());
-        vals.add(val);
+        if(this.val_index.containsKey(val)) return false;
+
+        this.val_index.put(val,this.vals.size());
+        this.vals.add(val);
 
         return true;
     }
     
     public boolean remove(int val) {
-        if(!valIndex.containsKey(val)) return false;
+        if(!this.val_index.containsKey(val)) return false;
 
-        int getLastItem = vals.get(vals.size() - 1);
-        int getKey = valIndex.get(val);
+        // get last val
+        int lastVal = this.vals.get(this.vals.size()  - 1);
+        // get index of val
+        int idx = this.val_index.get(val);
 
-        // Delete from dictionary
-        valIndex.put(getLastItem,getKey);
-        valIndex.remove(val);
-
+        // replace list
+        this.vals.set(idx,lastVal);
+         // replace map
+        this.val_index.put(lastVal,idx);
+               
         // delete from list
-        vals.set(getKey, getLastItem);
-        vals.remove(vals.size() - 1);
+        this.vals.remove(this.vals.size() - 1);
+        // delete from map
+        this.val_index.remove(val);
 
         return true;
-        
     }
     
     public int getRandom() {
-        Random random = new Random();
-
-        return vals.get(random.nextInt(vals.size()));
-        
+        int randIndex = this.random.nextInt(0, this.vals.size()); 
+        return this.vals.get(randIndex);        
     }
 }
 
-// SC => O(N)
+// SC -> O(N)
 // TC -> O(1)
 
 /**
