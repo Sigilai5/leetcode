@@ -1,52 +1,42 @@
 class RandomizedSet {
-    Map<Integer,Integer> val_index;
-    List<Integer> vals;
+    HashSet<Integer> set;
     Random random;
 
     public RandomizedSet() {
-        this.val_index = new HashMap<>();
-        this.vals = new ArrayList<>();
-        this.random = new Random();
+        set = new HashSet();
+        random = new Random();
     }
     
     public boolean insert(int val) {
-        if(this.val_index.containsKey(val)) return false;
+        if(set.contains(val)) return false;
 
-        this.val_index.put(val,this.vals.size());
-        this.vals.add(val);
+        set.add(val);
 
         return true;
+        
     }
     
     public boolean remove(int val) {
-        if(!this.val_index.containsKey(val)) return false;
+        if(!set.contains(val)) return false;
 
-        // get last val
-        int lastVal = this.vals.get(this.vals.size()  - 1);
-        // get index of val
-        int idx = this.val_index.get(val);
-
-        // replace list
-        this.vals.set(idx,lastVal);
-         // replace map
-        this.val_index.put(lastVal,idx);
-               
-        // delete from list
-        this.vals.remove(this.vals.size() - 1);
-        // delete from map
-        this.val_index.remove(val);
+        set.remove(val);
 
         return true;
+        
     }
     
     public int getRandom() {
-        int randIndex = this.random.nextInt(0, this.vals.size()); 
-        return this.vals.get(randIndex);        
+        List<Integer> result = new ArrayList<>(set);
+
+        return result.get(random.nextInt(result.size()));
+        
     }
 }
 
+
 // SC -> O(N)
-// TC -> O(1)
+// TC -> O(N)
+
 
 /**
  * Your RandomizedSet object will be instantiated and called as such:
