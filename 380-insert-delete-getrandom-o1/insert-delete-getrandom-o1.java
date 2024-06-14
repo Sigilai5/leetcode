@@ -1,42 +1,48 @@
 class RandomizedSet {
-    HashSet<Integer> set;
+    Map<Integer,Integer> valIndex;
+    List<Integer> vals;
     Random random;
 
     public RandomizedSet() {
-        set = new HashSet();
+        valIndex = new HashMap<>();
+        vals = new ArrayList<>();
         random = new Random();
     }
     
     public boolean insert(int val) {
-        if(set.contains(val)) return false;
+        if(valIndex.containsKey(val)) return false;
 
-        set.add(val);
+        valIndex.put(val,vals.size());
+        vals.add(val);
 
         return true;
         
     }
     
     public boolean remove(int val) {
-        if(!set.contains(val)) return false;
+        if(!valIndex.containsKey(val)) return false;
 
-        set.remove(val);
+        int lastVal = vals.get(vals.size() - 1);
+        int idx = valIndex.get(val);
+
+        vals.set(idx,lastVal);
+        valIndex.put(lastVal,idx);
+
+
+        vals.remove(vals.size() - 1);
+        valIndex.remove(val);
 
         return true;
         
     }
     
     public int getRandom() {
-        List<Integer> result = new ArrayList<>(set);
-
-        return result.get(random.nextInt(result.size()));
-        
+        return vals.get(random.nextInt(vals.size()));        
     }
 }
 
-
 // SC -> O(N)
-// TC -> O(N)
-
+// TC -> O(1)
 
 /**
  * Your RandomizedSet object will be instantiated and called as such:
