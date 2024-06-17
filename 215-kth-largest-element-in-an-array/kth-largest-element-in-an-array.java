@@ -5,6 +5,7 @@ class Solution {
         for(int num : nums){
             queue.add(num);
         }
+        
 
         for(int i = 0; i < k -1;i++){
             queue.poll();
@@ -14,3 +15,6 @@ class Solution {
         
     }
 }
+
+// SC -> O(N)
+// TC -> O(N Log K)
