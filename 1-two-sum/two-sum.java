@@ -1,16 +1,20 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
+        Map<Integer,Integer> lookUp = new HashMap<>();
+
         for(int i = 0; i < nums.length;i++){
-            for(int j = 0; j < nums.length;j++){
-                if(i !=j && nums[i] + nums[j] == target){
-                    return new int[] {i,j};
-                }
+            int compNum = target - nums[i];
+            if(lookUp.containsKey(compNum)){
+                return new int[] {lookUp.get(compNum),i};
             }
+
+            lookUp.put(nums[i],i); 
         }
 
         return new int[] {};
+        
     }
 }
 
-// SC -> O(1)
-// TC -> O(N*N)
+// SC -> O(N)
+// TC -> O(N)
