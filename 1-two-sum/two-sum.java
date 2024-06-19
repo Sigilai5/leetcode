@@ -13,4 +13,4 @@ class Solution {
 }
 
 // SC -> O(1)
-// TC -> O(N)
+// TC -> O(N*N)
