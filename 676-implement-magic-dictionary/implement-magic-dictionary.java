@@ -31,6 +31,9 @@ class MagicDictionary {
     }
 }
 
+// TC -> O(N*M)
+// SC -> O(N)
+
 /**
  * Your MagicDictionary object will be instantiated and called as such:
  * MagicDictionary obj = new MagicDictionary();
