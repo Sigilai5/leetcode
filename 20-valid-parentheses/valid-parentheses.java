@@ -1,26 +1,20 @@
 class Solution {
     public boolean isValid(String s) {
-        if(s.length() == 1) return false;
-        Stack<Character> stack = new Stack<>();
-
-        for(char c : s.toCharArray()){
-            if(c == '(' || c == '[' || c == '{'){
-                stack.push(c);
-            }else if (!stack.isEmpty() && c == ')' && stack.peek() == '('){
-                stack.pop();
-            }else if (!stack.isEmpty() && c == ']' && stack.peek() == '['){
-                stack.pop();
-            }else if (!stack.isEmpty() && c == '}' && stack.peek() == '{'){
-                stack.pop();
+        while(!s.isEmpty()){
+            if(s.contains("()")){
+                s = s.replace("()","");
+            }else if(s.contains("{}")){
+                s = s.replace("{}","");
+            }else if(s.contains("[]")){
+                s = s.replace("[]","");
             }else{
                 return false;
             }
         }
 
-        return stack.isEmpty();
+        if(s.isEmpty()) return true;
+
+        return false;
         
     }
 }
-
-// SC -> O(N)
-// TC -> O(N)
