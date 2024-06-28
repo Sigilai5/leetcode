@@ -1,19 +1,20 @@
 class UndergroundSystem {
-    private Map<Integer,Journey> journey;
-    private Map<String,Average> averages;
+    Map<Integer,Journey> journeys; 
+    Map<String,Average> averages;
 
     public UndergroundSystem() {
-        this.journey = new HashMap<>();
-        this.averages = new HashMap<>();
+        journeys = new HashMap<>();
+        averages = new HashMap<>();
     }
     
     public void checkIn(int id, String stationName, int t) {
-        this.journey.put(id,new Journey(stationName,t));        
-    } 
+        this.journeys.put(id,new Journey(id,stationName,t));
+    }
     
     public void checkOut(int id, String stationName, int t) {
-        int timeDif = t - this.journey.get(id).t;
-        String stations = this.journey.get(id).stationName + "->" + stationName;
+        Journey journey = this.journeys.get(id);
+        String stations = journey.stationName + "," + stationName;
+        int timeDif = t - journey.t;
 
         Average average = this.averages.containsKey(stations) ? this.averages.get(stations) : new Average();
 
@@ -21,49 +22,48 @@ class UndergroundSystem {
 
         this.averages.put(stations,average);
 
-        this.journey.remove(id);
-        
+        this.journeys.remove(id);
+
     }
     
     public double getAverageTime(String startStation, String endStation) {
-        String stations = startStation + "->" + endStation;
+        String stations = startStation + "," + endStation;
         return this.averages.get(stations).getAverage();
         
     }
 
-
-    class Journey {
+    class Journey { 
+        int id;
         String stationName;
         int t;
 
-        public Journey(String stationName,int t){
+        public Journey(int id, String stationName,int t){
+            this.id = id;
             this.stationName = stationName;
             this.t = t;
-
         }
+
 
     }
 
-    class Average{
+    class Average {
         double totalTime = 0;
         int customers = 0;
 
-        private void updateAverage(int timeDif){
+        public void updateAverage(int timeDif){
             totalTime+=timeDif;
             customers+=1;
         }
 
-        private double getAverage(){
-            double averageTime = totalTime/customers;
-
-            return averageTime;
+        public double getAverage(){
+            return totalTime / customers;
         }
 
-
     }
+
 }
 
-// SC -> O(M+N)
+// SC -> O(N+M)
 // TC -> O(1)
 
 /**
@@ -73,6 +73,3 @@ class UndergroundSystem {
  * obj.checkOut(id,stationName,t);
  * double param_3 = obj.getAverageTime(startStation,endStation);
  */
-
- // Customer -> id (station-checkin,time)
- // Stations -> stations(total time, no customers)
