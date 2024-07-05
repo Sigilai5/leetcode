@@ -16,6 +16,9 @@ class Solution:
         
         return intervals
 
+        # SC -> O(1)
+        # TC ->  O(N Log N)
+
 
 
 
