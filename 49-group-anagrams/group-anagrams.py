@@ -1,13 +1,17 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        groupedAnagram = defaultdict(list)
+        count = defaultdict(list)
 
         for st in strs:
-            sorted_st = "".join(sorted(list(st)))
-            groupedAnagram[sorted_st].append(st)
+            gram = [0] * 26
+
+            for char in st:
+                gram[ord(char) - ord('a')]+=1
+            
+            count[tuple(gram)].append(st)
         
 
-        return groupedAnagram.values()
-        
-        # SC -> O(N)
-        # TC -> O(N Log N)
+        return count.values()
+    
+    # SC -> O(N)
+    # TC -> O(N+M)
