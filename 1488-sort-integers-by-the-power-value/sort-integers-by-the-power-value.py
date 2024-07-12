@@ -1,39 +1,27 @@
 class Solution:
     def getKth(self, lo: int, hi: int, k: int) -> int:
         nums = [i for i in range(lo,hi+1)]
-        heap = []
+        
+        countDict = {}
 
         for num in nums:
-            steps = 0
-            x = num 
+            count = 0
+            val = num 
 
-            while x != 1:
-                if x % 2 == 0:
-                    x = x / 2
-                    steps+=1
+            while val != 1:
+                if val%2 == 0:
+                    val = val / 2
+                    count+=1
                 else:
-                    x = 3 * x + 1
-                    steps+=1
-            heap.append((steps,num))
+                    val = 3 * val + 1
+                    count+=1
+                
+            countDict[num] = count
 
-        heapq.heapify(heap)
+        nums.sort(key = lambda x: countDict[x])
 
-        for i in range(k-1):
-            if heap:
-                heapq.heappop(heap)
 
-        return heapq.heappop(heap)[1]
+        return nums[k-1]
 
-        # TC -> O(N Log K)
         # SC -> O(N)
-
-
-
-        
-       
-        
-        
-    
-
-       
-        
+        # TC -> O(N log N)
