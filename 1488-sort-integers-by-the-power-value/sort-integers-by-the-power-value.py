@@ -18,10 +18,16 @@ class Solution:
                 
             countDict[num] = count
 
-        nums.sort(key = lambda x: countDict[x])
+        vals = [(val,key) for key,val in countDict.items()]
+        
+        heapq.heapify(vals)
 
+        for _ in range(k-1):
+            if vals:
+                heapq.heappop(vals)
 
-        return nums[k-1]
+        
+        return heapq.heappop(vals)[1]
 
-        # SC -> O(N)
-        # TC -> O(N log N)
+    # SC -> O(N)
+    # TC -> O(N Log K)
