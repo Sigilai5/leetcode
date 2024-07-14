@@ -9,15 +9,14 @@ class Solution:
         if not head:
             return False
 
-        slow = head
-        fast = head.next
+        curr = head
+        unique =  set()
 
-        while fast and fast.next:
-            if slow == fast: return True
-
-            slow = slow.next
-            fast = fast.next.next
-
+        while curr:
+            if curr in unique:
+                return True
+            unique.add(curr)
+            curr = curr.next
         
         return False
         
