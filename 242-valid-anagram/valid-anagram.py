@@ -1,19 +1,21 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
+        if len(s) != len(t): return False
 
-
-        sArray = [0] * 26
-        tArray = [0] * 26
+        s_arr = [0] * 26
+        t_arr = [0] * 26
 
         for i in range(len(s)):
-            sArray[ord(s[i]) - ord('a')]+=1
-            tArray[ord(t[i]) - ord('a')]+=1
+            s_arr[ord(s[i]) - ord('a')]+=1
 
-    
-        return sArray == tArray
+        for i in range(len(t)):
+            t_arr[ord(t[i]) - ord('a')]+=1
 
+        
+        if s_arr == t_arr: return True
 
-        # SC -> O(N)
-        # TC -> O(N)
+        return False
+
+    # SC -> O(26) -> O(1)
+    # TC -> O(N)
+        
