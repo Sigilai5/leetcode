@@ -1,17 +1,15 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        count = defaultdict(list)
+        anagrams = defaultdict(list)
 
         for st in strs:
-            gram = [0] * 26
-
-            for char in st:
-                gram[ord(char) - ord('a')]+=1
-            
-            count[tuple(gram)].append(st)
+            anagram = [0] * 26
+            for i in range(len(st)):
+                anagram[ord(st[i]) - ord('a')]+=1
+            anagrams[tuple(anagram)].append(st)
         
+        return anagrams.values()
 
-        return count.values()
-    
-    # SC -> O(N)
-    # TC -> O(N+M)
+        # SC -> O(N)
+        # TC -> O(N)
+        
