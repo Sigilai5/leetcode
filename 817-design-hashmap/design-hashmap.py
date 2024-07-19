@@ -9,6 +9,7 @@ class MyHashMap:
             if key == self.key_val[i][0]:
                 self.key_val[i][1] = value
                 return
+                
         
         new = [key,value]
         self.key_val.append(new)
