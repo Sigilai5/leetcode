@@ -1,36 +1,28 @@
-import random
-
 class RandomizedSet:
 
     def __init__(self):
-        self.bucket = {}
-        self.values = []
-
+        self.unique = set()
+        
     def insert(self, val: int) -> bool:
-        if val in self.bucket:
-            return False
-            
-        self.bucket[val] = len(self.values)
-        self.values.append(val)
-        return True
+        if val in self.unique: return False
+
+        self.unique.add(val)
+        return True        
 
     def remove(self, val: int) -> bool:
-        if val not in self.bucket:
-            return False
+        if val not in self.unique: return False
 
-        index, last_ele = self.bucket[val], self.values[-1]
-        self.values[index] = last_ele
-        self.bucket[last_ele] = index
-        
-        del self.bucket[val]
-        self.values.pop()
-        
+        self.unique.remove(val)
         return True
         
 
     def getRandom(self) -> int:
-        return random.choice(self.values)
+        result = list(self.unique)
+        return random.choice(result)
         
+    # SC -> O(N)
+    # TC -> O(N)
+
 
 # Your RandomizedSet object will be instantiated and called as such:
 # obj = RandomizedSet()
