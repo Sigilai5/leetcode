@@ -1,17 +1,15 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        check = {}
+        num_id = {}
 
         for i in range(len(nums)):
-            num = target - nums[i]
+            dif = target - nums[i]
 
-            if num in check:
-                return {i,check.get(num)}
+            if dif in num_id:
+                return {i,num_id.get(dif)}
             
-            check[nums[i]] = i
-        
-        return []
+            num_id[nums[i]] = i
 
-        # SC -> O(N)
-        # TC -> O(N)
+# SC -> O(N)
+# TC -> O(N)
         
