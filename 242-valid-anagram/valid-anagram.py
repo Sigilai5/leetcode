@@ -1,10 +1,24 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        s_sorted = list(sorted(s))
-        t_sorted = list(sorted(t))
+        if len(s) != len(t): return False
 
-        return s_sorted == t_sorted
+        s_arr = [0] * 26
+        t_arr = [0] * 26
 
-        # TC O(NLogN)
-        # SC -> O(N)
+        for i in range(len(s)):
+            s_arr[ord(s[i]) - ord('a')]+=1
+
+        for i in range(len(t)):
+            t_arr[ord(t[i]) - ord('a')]+=1
+
+        
+        return s_arr == t_arr
+            
+        
+    
+
+    
+
+# SC -> O(1)
+# TC -> O(N)
         
