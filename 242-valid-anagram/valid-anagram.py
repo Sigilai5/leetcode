@@ -6,5 +6,5 @@ class Solution:
         return s_sorted == t_sorted
 
         # TC O(NLogN)
-        # SC -> O(1)
+        # SC -> O(N)
         
