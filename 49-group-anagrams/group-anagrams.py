@@ -3,13 +3,15 @@ class Solution:
         anagrams = defaultdict(list)
 
         for word in strs:
-            sorted_word = "".join(list(sorted(word)))
+            word_list = [0] * 26
+            for i in range(len(word)):
+                word_list[ord('a') - ord(word[i])]+=1
+            
+            anagrams[tuple(word_list)].append(word)
 
-            anagrams[sorted_word].append(word)
-        
         return anagrams.values()
 
     # SC -> O(N)
-    # TC - > O(N log N)
+    # TC - > O(N*M)
 
         
