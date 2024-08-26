@@ -14,25 +14,31 @@ class Solution:
             return root
         
         queue = deque()
+
         queue.append(root)
 
         while queue:
-            for i in range(len(queue)):
-                current_level = queue.popleft()
+            size = len(queue)
+
+            for i in range(size):
+                current = queue.popleft()
+
+                if current.left != None and current.right != None:
+                    current.left.next = current.right
                 
-                if current_level.left:
-                    current_level.left.next = current_level.right
+                if current.right != None and current.next != None:
+                    current.right.next = current.next.left
                 
-                if current_level.right and current_level.next:
-                    current_level.right.next = current_level.next.left
-            
-                if current_level.left:
-                    queue.append(current_level.left)
+
+                if current.left:
+                    queue.append(current.left)
                 
-                if current_level.right:
-                    queue.append(current_level.right)
+                if current.right:
+                    queue.append(current.right)
         
         return root
-    
+
+
     # SC -> O(N)
     # TC -> O(N)
+        
