@@ -1,19 +1,24 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
+        if len(nums) == 1 and nums[0] == target:
+            return 0
 
-        
-        left,right = 0, len(nums)-1
+        left = 0
+        right = len(nums) - 1
 
         while left <= right:
-            mid_point = (left+right) // 2
-            if nums[mid_point] == target:
-                return mid_point
-            elif nums[mid_point] < target:
-                left+=1
-            else:
+            mid = (right + left)//2
+
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] > target:
                 right-=1
+            elif nums[mid] < target:
+                left+=1
         
+
         return -1
         
-        # SC -> O(N)
-        # TC -> O(Log N)
+
+# SC -> O(1)
+# TC -> O(N)
