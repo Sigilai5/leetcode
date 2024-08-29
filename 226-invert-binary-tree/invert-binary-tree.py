@@ -8,15 +8,15 @@ class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
             return root
-
-
-        root.left, root.right = root.right, root.left
+        
+        hold = root.left
+        root.left = root.right
+        root.right = hold
 
         self.invertTree(root.left)
         self.invertTree(root.right)
 
         return root
-
-        # SC -> O(1), if we're ignoring recursive stack frames
-        # TC -> O(N)
         
+        # SC -> O(N) including recursive stack frames
+        # TC -> O(N)
