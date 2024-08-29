@@ -9,14 +9,27 @@ class Solution:
         if not root:
             return root
         
-        hold = root.left
-        root.left = root.right
-        root.right = hold
+        queue = deque()
+        queue.append(root)
 
-        self.invertTree(root.left)
-        self.invertTree(root.right)
+        while queue:
+            queue_size = len(queue)
 
-        return root
+            for i in range(queue_size):
+                current = queue.popleft()
+
+                hold = current.left
+                current.left = current.right
+                current.right = hold
+
+                if current.left:
+                    queue.append(current.left)
+
+                if current.right:
+                    queue.append(current.right)
+
         
-        # SC -> O(N) including recursive stack frames
-        # TC -> O(N)
+        return root
+    
+    # SC -> O(N)
+    # TC -> O(N) 
