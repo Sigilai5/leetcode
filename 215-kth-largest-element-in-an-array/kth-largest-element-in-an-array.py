@@ -6,7 +6,7 @@ class Solution:
 
         for num in nums[k:]: # [1,5,6,4]
             if num > min_heap[0]:
-                heapq.heapreplace(min_heap,num)
+                heapq.heapreplace(min_heap,num) # [5,6]
         
         return min_heap[0]
     
