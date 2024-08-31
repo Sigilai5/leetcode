@@ -3,12 +3,12 @@ class Solution:
         groups = defaultdict(list)
 
         for word in strs:
-            sorted_word = "".join(list(sorted(word)))
+            let_group = [0] * 26
 
-            groups[sorted_word].append(word)
-
+            for i in range(len(word)):
+                let_group[ord(word[i]) - ord('a')]+=1
+            
+            groups[tuple(let_group)].append(word)
         
         return groups.values()
-
-        # SC -> O(N)
-        # TC -> O(N Log N)
+        
