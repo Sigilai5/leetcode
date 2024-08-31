@@ -1,17 +1,14 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        anagrams = defaultdict(list)
+        groups = defaultdict(list)
 
         for word in strs:
-            word_list = [0] * 26
-            for i in range(len(word)):
-                word_list[ord('a') - ord(word[i])]+=1
-            
-            anagrams[tuple(word_list)].append(word)
+            sorted_word = "".join(list(sorted(word)))
 
-        return anagrams.values()
-
-    # SC -> O(N)
-    # TC - > O(N*M)
+            groups[sorted_word].append(word)
 
         
+        return groups.values()
+
+        # SC -> O(N)
+        # TC -> O(N Log N)
