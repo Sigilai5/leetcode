@@ -4,25 +4,18 @@ class Solution:
 
         intervals.sort(key=lambda x: x[0])
 
-        output = [intervals[0]] # [[1,3]]
+        i = 1 
 
-        i = 0
-        j = 1
-
-        while j < len(intervals):
-            if intervals[j][0] <= output[i][1]: # 2 <= 3
-                max_sec = max(intervals[j][1],intervals[i][1])
-                output[i][1] = max_sec
-                intervals.pop(j)
+        while i < len(intervals):
+            if intervals[i][0] <= intervals[i-1][1]:
+                intervals[i-1][1] = max(intervals[i-1][1],intervals[i][1])
+                intervals.pop(i)
             else:
-                output.append(intervals[j])
                 i+=1
-                j+=1
-        
-        return output
 
-        # SC -> O(N)
+
+        return intervals
+
+        # SC -> O(1)
         # TC -> O(N Log N)
-
-
         
