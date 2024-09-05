@@ -6,17 +6,21 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        if not head:
-            return False
+        if not head: return False
 
-        curr = head
-        unique =  set()
+        slow = head
+        fast = head.next
 
-        while curr:
-            if curr in unique:
+        while fast and fast.next:
+            if slow == fast:
                 return True
-            unique.add(curr)
-            curr = curr.next
+            
+            slow = slow.next
+            fast = fast.next.next
         
         return False
+
+
+        # SC -> O(1)
+        # TC -> O(1N)
         
