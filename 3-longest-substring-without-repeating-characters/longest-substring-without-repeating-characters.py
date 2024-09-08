@@ -1,27 +1,29 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if len(s) == 0:
-            return 0
+        # s = "abcabcbb" ,"abc" ,"bca","cab","abc","bc","cb"
+        if len(s) == 0: return 0
+        if len(s) == 1: return 1
 
-        if len(s) == 1:
-            return 1
+        longest = set()
 
-        longest = 0
+        max_longest = 0
 
-        i = 0
-        j = 0
+        i,j = 0,1
 
-        sub = set()
+        longest.add(s[i])
 
         while j < len(s):
-            if s[j] not in sub:
-                sub.add(s[j])
-                longest = max(longest,len(sub))
-                j+=1
-            else:
-                sub.remove(s[i]) 
+            if s[j] in longest:
+                longest.remove(s[i])
                 i+=1
+            else:
+                longest.add(s[j])
+                max_longest = max(max_longest,len(longest))
+                j+=1
+
+        return max_longest
+
+        # SC -> O(N)
+        # TC -> O(N)
+
         
-        return longest
-    # SC -> O(N)
-    # TC -> O(N)
