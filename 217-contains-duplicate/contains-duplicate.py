@@ -1,13 +1,15 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        check_list = set()
+        unique = set()
 
         for num in nums:
-            if num in check_list:
+            if num in unique:
                 return True
-            else:
-                check_list.add(num)
+            
+            unique.add(num)
         
-
         return False
+
+        # SC -> O(N)
+        # TC -> O(N)
         
