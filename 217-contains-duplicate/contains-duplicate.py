@@ -5,7 +5,6 @@ class Solution:
         for num in nums:
             if num in unique:
                 return True
-            
             unique.add(num)
         
         return False
