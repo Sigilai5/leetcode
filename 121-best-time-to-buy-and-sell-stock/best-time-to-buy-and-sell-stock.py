@@ -1,23 +1,20 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        if len(prices) == 1: return 0
-        maxProfit = 0
+        if len(prices) <= 1: return 0
+
         buy,sell = 0,1
+
+        max_profit = 0
 
         while sell < len(prices):
             if prices[sell] > prices[buy]:
-                profit = prices[sell] - prices[buy]
-                maxProfit = max(maxProfit,profit)
-            else: 
+                max_profit = max(max_profit, prices[sell] - prices[buy])
+                sell+=1
+            else:
                 buy = sell
-            
-            sell+=1
+                sell+=1
         
-        return maxProfit
 
-        # SC -> O(1)
-        # TC -> O(N)
-
-
+        return max_profit
 
         
