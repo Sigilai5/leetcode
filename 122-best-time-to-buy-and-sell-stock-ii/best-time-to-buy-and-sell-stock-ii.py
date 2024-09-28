@@ -10,14 +10,14 @@ class Solution:
                 profit = prices[sell] - prices[buy]
                 total.append(profit)
                 buy+=1
-                sell+=1
             else:
                 buy = sell
-                sell+=1
+            
+            sell+=1
         
 
         sum_total = sum(total)
-        return sum_total\
+        return sum_total
 
         # TC -> O(N)
         # SC -> O(N)
