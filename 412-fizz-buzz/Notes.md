@@ -1,1 +1,1 @@
-<h2>fizz-buzz Notes</h2><hr>[ Time taken: 7 m 1 s ]
+<h2>fizz-buzz Notes</h2><hr>[ Time taken: 2 m 25 s ]
