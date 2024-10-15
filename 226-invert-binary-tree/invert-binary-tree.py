@@ -9,27 +9,13 @@ class Solution:
         if not root:
             return root
         
-        queue = deque()
-        queue.append(root)
 
-        while queue:
-            queue_size = len(queue)
+        hold = root.left
+        root.left = root.right
+        root.right = hold
 
-            for i in range(queue_size):
-                current = queue.popleft()
+        self.invertTree(root.left)
+        self.invertTree(root.right)
 
-                hold = current.left
-                current.left = current.right
-                current.right = hold
-
-                if current.left:
-                    queue.append(current.left)
-
-                if current.right:
-                    queue.append(current.right)
-
-        
         return root
-    
-    # SC -> O(N)
-    # TC -> O(N) 
+        
