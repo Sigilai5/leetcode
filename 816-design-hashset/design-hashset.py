@@ -1,29 +1,22 @@
 class MyHashSet:
 
     def __init__(self):
-        self.unique = []
+        self.store = []
         
 
     def add(self, key: int) -> None:
-        if key in self.unique:
-            self.unique.remove(key)
-        self.unique.append(key)
-        
+        if key not in self.store:
+            self.store.append(key)
 
     def remove(self, key: int) -> None:
-        if key in self.unique:
-            self.unique.remove(key)
-        
+        if key in self.store:
+            self.store.remove(key)        
 
     def contains(self, key: int) -> bool:
-        if key in self.unique:
+        if key in self.store:
             return True
         else:
             return False
-
-    # SC -> O(N)
-    # TC -> O(N)
-        
 
 
 # Your MyHashSet object will be instantiated and called as such:
