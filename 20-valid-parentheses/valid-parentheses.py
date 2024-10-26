@@ -11,4 +11,7 @@ class Solution:
                 return False
             
         return True
+
+        # SC -> O(N)
+        # TC -> O(N*M)
         
