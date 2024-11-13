@@ -3,13 +3,13 @@ class Solution:
         check = {}
 
         for i in range(len(nums)):
-            dif = target - nums[i]
-
-            if dif in check:
-                return {check.get(dif),i}
-
-            check[nums[i]] = i        
-
-
+            expect = target - nums[i]
+            if expect in check:
+                return [check.get(expect),i]
+            
+            check[nums[i]] = i
+    
     # SC -> O(N)
     # TC -> O(N)
+            
+        
