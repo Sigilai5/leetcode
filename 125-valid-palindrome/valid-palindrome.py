@@ -2,12 +2,16 @@ class Solution:
     def isPalindrome(self, s: str) -> bool:
         s = s.replace(" ","")
         s = s.lower()
-        result = []
+
+        output = []
 
         for ch in s:
             if ch.isalnum():
-                result.append(ch)
-        
+                output.append(ch)
 
-        return result == result[::-1]
+
+        return output  == output[::-1] 
+
+        # SC -> O()
+        # TC -> O(N) 
         
