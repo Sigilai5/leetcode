@@ -1,15 +1,15 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        unique = defaultdict(list)
+        anagrams = defaultdict(list)
 
         for word in strs:
-            sorted_word = "".join(list(sorted(word)))
+            sorted_word = "".join(sorted(word))
 
-            unique[sorted_word].append(word)
+            anagrams[sorted_word].append(word)
+
         
+        return list(anagrams.values())
 
-        return unique.values()
-
-        # SC -> O(N)
-        # TC -> O(N * MlogM)
+        # SC -> o(N)
+        # TC -> O(N * M Log M)
         
