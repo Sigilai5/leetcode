@@ -4,12 +4,13 @@ class Solution:
 
         for i in range(len(nums)):
             expect = target - nums[i]
+
             if expect in check:
                 return [check.get(expect),i]
             
             check[nums[i]] = i
-    
-    # SC -> O(N)
-    # TC -> O(N)
-            
         
+        return []
+        
+        # SC -> O(N)
+        # TC -> O(N)
