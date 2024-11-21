@@ -1,17 +1,19 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         while s:
-            if '()' in s:
-                s = s.replace('()','')
-            elif '{}' in s:
-                s = s.replace('{}','')
-            elif '[]' in s:
-                s = s.replace('[]','')
+            if "()" in s:
+                s = s.replace("()","")
+            elif "[]" in s:
+                s = s.replace("[]","")
+            elif "{}" in s:
+                s = s.replace("{}","")
             else:
                 return False
-            
+        
         return True
-
-        # SC -> O(N)
-        # TC -> O(N*M)
+        
+    
+    # SC -> O(N)
+    # TC -> O(N * N)
+             
         
