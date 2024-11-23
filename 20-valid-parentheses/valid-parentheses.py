@@ -1,19 +1,23 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        while s:
-            if "()" in s:
-                s = s.replace("()","")
-            elif "[]" in s:
-                s = s.replace("[]","")
-            elif "{}" in s:
-                s = s.replace("{}","")
+        output = []
+
+        for ch in s: # s = "([])"
+            if ch == "(" or ch == "[" or ch == "{":
+                output.append(ch) # ["(","["]
+            elif output and output[-1] == "(" and ch == ")":
+                output.pop(-1)
+            elif output and output[-1] == "[" and ch == "]":
+                output.pop(-1)
+            elif output and output[-1] == "{" and ch == "}":
+                output.pop(-1)
             else:
                 return False
         
-        return True
-        
-    
-    # SC -> O(N)
-    # TC -> O(N * N)
-             
-        
+
+        if len(output) == 0: return True
+
+        return False
+
+        # SC -> O(N)
+        # TC -> O(N)
