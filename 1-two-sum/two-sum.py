@@ -1,16 +1,10 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        check = {}
-
         for i in range(len(nums)):
-            expect = target - nums[i]
-
-            if expect in check:
-                return [check.get(expect),i]
-            
-            check[nums[i]] = i
+            for j in range(len(nums)):
+                if i != j and nums[i] + nums[j] == target:
+                    return [i,j]
         
+
         return []
         
-        # SC -> O(N)
-        # TC -> O(N)
