@@ -8,10 +8,9 @@ class Solution:
         for ch in s:
             if ch.isalnum():
                 output.append(ch)
+        
+        return output == output[::-1]
 
-
-        return output  == output[::-1] 
-
-        # SC -> O()
-        # TC -> O(N) 
+        # SC -> O(N)
+        # TC -> O(N)
         
