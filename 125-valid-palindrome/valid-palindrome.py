@@ -11,6 +11,5 @@ class Solution:
         
         return output == output[::-1]
 
-        # SC -> O(N)
-        # TC -> O(N)
-        
+    # SC -> O(N)
+    # TC -> O(N)
