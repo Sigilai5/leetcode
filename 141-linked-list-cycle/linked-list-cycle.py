@@ -7,20 +7,20 @@
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         if not head: return False
+        
+        slow = head
+        fast = head.next
 
-        curr = head
-
-        unique = set()
-
-        while curr:
-            if curr in unique:
+        while fast and fast.next:
+            if fast == slow:
                 return True
-            
-            unique.add(curr)
-
-            curr = curr.next
+            else:
+                slow = slow.next
+                fast = fast.next.next
         
         return False
-        
-        # SC -> O(N)
+
+        # SC -> O(1)
         # TC -> O(N)
+
+        
