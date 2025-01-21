@@ -6,10 +6,9 @@ class Solution:
             sorted_word = "".join(sorted(word))
 
             anagrams[sorted_word].append(word)
-
         
         return list(anagrams.values())
 
-        # SC -> o(N)
-        # TC -> O(N * M Log M)
+        # TC -> O(N Log N)
+        # SC -> O(N)
         
