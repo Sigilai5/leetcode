@@ -12,11 +12,12 @@ class Solution:
             heapq.heappush(heap,(-val,key))
 
         result = []
-        
+
+
         for _ in range(k):
             if heap:
                 result.append(heapq.heappop(heap)[1])
-        
+                
         return result
 
         # SC -> O(N + M)
