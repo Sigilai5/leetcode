@@ -9,7 +9,16 @@ class Solution:
             if ch.isalnum():
                 output.append(ch)
         
-        return output == output[::-1]
+        l,r = 0,len(output) - 1
 
-    # SC -> O(N)
-    # TC -> O(N)
+        while l < r:
+            if output[l] != output[r]:
+                return False
+            l+=1
+            r-=1
+        
+        return True
+
+        # SC -> O(N)
+        # TC -> O(N)
+        
