@@ -1,24 +1,20 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        s = s.replace(" ","")
-        s = s.lower()
+        if len(s) == 1: return True
+        s = s.replace(" ","").lower()
 
         output = []
 
         for ch in s:
             if ch.isalnum():
                 output.append(ch)
-        
-        l,r = 0,len(output) - 1
 
-        while l < r:
-            if output[l] != output[r]:
-                return False
-            l+=1
-            r-=1
         
-        return True
+        return output == output[::-1]
 
         # SC -> O(N)
         # TC -> O(N)
+
+        
+
         
