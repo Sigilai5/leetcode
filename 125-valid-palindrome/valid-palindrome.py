@@ -10,10 +10,17 @@ class Solution:
                 output.append(ch)
 
         
-        return output == output[::-1]
+        i,j = 0, len(output) - 1
 
-        # SC -> O(N)
-        # TC -> O(N)
+        while i <= j:
+            if output[i] != output[j]:
+                return False
+            
+            i+=1
+            j-=1
+        
+
+        return True
 
         
 
