@@ -5,15 +5,8 @@ class Solution:
         else:
             last = self.fib(n-1)
             slast = self.fib(n-2)
-
             return last + slast
 
-            # TC -> O(2N)
-            # SC -> O(N)
-
-
-    # Recursion tree makes this question and any other question related to recursion simpler
-
-
-
+        # SC -> O(N), recursion stack
+        # TC -> O(2^N)
         
