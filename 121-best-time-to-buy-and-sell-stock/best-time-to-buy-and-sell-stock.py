@@ -11,11 +11,10 @@ class Solution:
                 profit = prices[sell] - prices[buy]
 
                 max_profit = max(max_profit,profit)
-
-                sell += 1
             else:
                 buy = sell
-                sell+=1
+            
+            sell+=1
         
         return max_profit
 
