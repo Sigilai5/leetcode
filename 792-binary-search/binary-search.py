@@ -4,17 +4,16 @@ class Solution:
 
         while l <= r:
             mid = (l+r)//2
+
             if nums[mid] == target:
                 return mid
-            elif nums[mid] <  target:
+            elif nums[mid] < target:
                 l+=1
-            elif nums[mid] > target:
+            else:
                 r-=1
         
         return -1
 
-        # SC -> O(1)
-        # TC -> O(Log N)
-
-
+    # SC -> O(1)
+    # TC -> O(N)
         
