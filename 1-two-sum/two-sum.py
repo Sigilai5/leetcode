@@ -3,12 +3,10 @@ class Solution:
         find = {}
 
         for i in range(len(nums)):
-            expect = target - nums[i] # 9 - 2 = 7, 9 - 7 = 2
+            expect = target - nums[i]
 
-            if expect in find: # 7 
-                return [find.get(expect),i]
+            if expect in find:
+                return [i, find.get(expect)] 
             
-            find[nums[i]] = i  # {2:0}
+            find[nums[i]] = i
         
-    # SC -> O(N)
-    # TC -> O(N)
