@@ -8,23 +8,16 @@ class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root: return root
 
-        queue = deque()
+        hold = root.left
+        root.left = root.right
+        root.right = hold
 
-        queue.append(root)
+        self.invertTree(root.left)
+        self.invertTree(root.right)
 
-        while queue:
-            level_node = queue.popleft()
-
-            hold = level_node.left
-            level_node.left = level_node.right
-            level_node.right = hold
-
-            if level_node.left:
-                queue.append(level_node.left)
-            
-            if level_node.right:
-                queue.append(level_node.right)
-        
 
         return root
+
+        # SC -> O(N), recursive stack frames
+        # TC -> O(N)
         
