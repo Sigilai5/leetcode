@@ -1,7 +1,7 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        if len(s) == 1: return True
-        s = s.replace(" ","").lower()
+        s = s.replace(" ","")
+        s = s.lower()
 
         output = []
 
@@ -10,18 +10,8 @@ class Solution:
                 output.append(ch)
 
         
-        i,j = 0, len(output) - 1
 
-        while i <= j:
-            if output[i] != output[j]:
-                return False
-            
-            i+=1
-            j-=1
-        
+        return output == output[::-1]
 
-        return True
-
-        
-
-        
+        # SC -> O(N)
+        # TC -> O(N*N)        
