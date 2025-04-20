@@ -3,18 +3,18 @@ class Solution:
         stack = []
 
         for ch in s:
-            if ch == "(" or ch == "[" or ch == "{":
+            if ch == "(" or ch == "[" or ch =="{":
                 stack.append(ch)
             elif stack and stack[-1] == "(" and ch == ")":
                 stack.pop(-1)
-            elif stack and stack[-1] == "[" and ch == "]":
-                stack.pop(-1)
             elif stack and stack[-1] == "{" and ch == "}":
+                stack.pop(-1)
+            elif stack and stack[-1] == "[" and ch == "]":
                 stack.pop(-1)
             else:
                 return False
-            
         
+
         if len(stack) == 0: return True
 
         return False
