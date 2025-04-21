@@ -5,17 +5,22 @@ class Solution:
         most_water = 0
 
         while l < r:
-            min_height = min(height[l],height[r])
-            width = r - l
-            capacity = width * min_height
-            most_water = max(most_water,capacity)
+            w = r - l
+            h = min(height[l],height[r])
 
-            if height[r] < height[l]:
-                r-=1
-            else:
+            area = w * h
+            most_water = max(most_water,area)
+
+            if height[l] < height[r]:
                 l+=1
+            else:
+                r-=1
+
         
         return most_water
 
+
         # SC -> O(1)
         # TC -> O(N)
+
+        
