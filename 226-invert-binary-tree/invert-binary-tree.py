@@ -15,9 +15,9 @@ class Solution:
         self.invertTree(root.left)
         self.invertTree(root.right)
 
-
         return root
 
         # SC -> O(N), recursive stack frames
+
         # TC -> O(N)
         
