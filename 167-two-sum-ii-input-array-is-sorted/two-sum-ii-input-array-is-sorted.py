@@ -9,7 +9,7 @@ class Solution:
                 return [left+1,right+1]
             elif two_sum > target:
                 right-=1
-            elif two_sum < target:
+            else:
                 left+=1
         
         return [-1,-1]
