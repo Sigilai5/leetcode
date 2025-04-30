@@ -12,17 +12,8 @@ class Solution:
                 output.append(ch)
 
         
-
-        left,right = 0, len(output) - 1
-
-        while left < right:
-            if output[left] != output[right]:
-                return False
-            left+=1
-            right-=1
-
-        
-        return True
+        return output == output[::-1]
 
         # SC -> O(N)
-        # TC -> O(N*N)        
+        # TC -> O(N)
+        
