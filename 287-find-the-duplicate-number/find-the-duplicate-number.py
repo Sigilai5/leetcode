@@ -1,14 +1,21 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        unique = set()
+        slow,fast = nums[0],nums[0]
 
-        for num in nums:
-            if num in unique:
-                return num
-            unique.add(num)
-        
-        return -1
+        # Check if there is cycle
+        while True:
+            slow = nums[slow] # [4]
+            fast = nums[nums[fast]]
 
-        # SC -> O(N)
-        # TC -> O(N)
+            if slow == fast: break
+
         
+        slow = nums[0]
+
+        while slow != fast:
+            slow = nums[slow]
+            fast = nums[fast]
+
+        return slow
+        
+
