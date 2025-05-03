@@ -3,12 +3,11 @@ class Solution:
         count_negative = 0
 
         for num in nums:
-            if num == 0:
-                return 0
-            
-            if num < 0:
-                count_negative += 1
-        
-
+            if num == 0: return 0
+            if num < 0: count_negative += 1
+                        
         return 1 if count_negative % 2 == 0 else -1
+
+        # SC -> O(1)
+        # TC -> O(N)
         
