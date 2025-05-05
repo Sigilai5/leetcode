@@ -1,21 +1,15 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        s = s.strip()
-        s = s.split()
-        
-        stack = []
-
-        for word in s:
-            stack.append(word)
-
+        s = s.strip().split()
 
         result = []
 
-        while stack:
-            result.append(stack.pop())
+        for i in range(len(s) - 1, -1,-1):
+            result.append(s[i])
 
         return ' '.join(result)
-
+        
+        
 
         # SC -> O(N)
         # TC -> O(N)
