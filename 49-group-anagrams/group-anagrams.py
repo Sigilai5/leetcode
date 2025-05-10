@@ -1,13 +1,14 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        unique = defaultdict(list)
+        groups = defaultdict(list)
 
         for word in strs:
             sorted_word = "".join(list(sorted(word)))
-            unique[sorted_word].append(word)
 
-        
-        return list(unique.values())
+            groups[sorted_word].append(word)
+
+        return list(groups.values())
 
         # SC -> O(N)
         # TC -> O(N Log N)
+        
