@@ -1,18 +1,13 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        s = s.strip().split()
-
+        s = s.split()
         result = []
 
-        for i in range(len(s) - 1, -1,-1):
+        for i in range(len(s) - 1,-1,-1):
             result.append(s[i])
 
-        return ' '.join(result)
-        
-        
+        return " ".join(result)
 
         # SC -> O(N)
         # TC -> O(N)
-    
-
         
