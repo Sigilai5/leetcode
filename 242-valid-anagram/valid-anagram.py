@@ -1,18 +1,10 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t): return False
+        s_sorted = list(sorted(s))
+        t_sorted = list(sorted(t))
 
-        s_gram = [0]*26
-        t_gram = [0]*26
+        return s_sorted == t_sorted
 
-        for i in range(len(s)):
-            s_gram[ord('a') - ord(s[i])]+=1
-            t_gram[ord('a') - ord(t[i])]+=1
-
-        
-        return s_gram == t_gram
-
-        # SC -> O(26), O(1)
-        # TC -> O(N)
-
+        # SC -> O(N)
+        # TC -> O(N Log N)
         
