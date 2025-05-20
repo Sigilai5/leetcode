@@ -11,6 +11,7 @@ class Solution:
         
         return False
 
-        # SC -> 
+        # SC -> O(N)
+        # TC -> O(N+N)
 
         
