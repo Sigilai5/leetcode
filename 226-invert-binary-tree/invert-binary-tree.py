@@ -12,12 +12,14 @@ class Solution:
         root.left = root.right
         root.right = hold
 
+
         self.invertTree(root.left)
         self.invertTree(root.right)
 
         return root
 
-        # SC -> O(N), recursive stack frames
-
+        # SC -> O(1), ignoring recursive stack frames
         # TC -> O(N)
+
+
         
