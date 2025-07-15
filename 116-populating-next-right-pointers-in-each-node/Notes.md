@@ -1,1 +1,1 @@
-<h2>populating-next-right-pointers-in-each-node Notes</h2><hr>[ Time taken: 14 m 17 s ]
+<h2>populating-next-right-pointers-in-each-node Notes</h2><hr>[ Time taken: 12 m 41 s ]
