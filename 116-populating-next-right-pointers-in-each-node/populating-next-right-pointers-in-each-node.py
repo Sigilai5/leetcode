@@ -12,30 +12,17 @@ class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
         if not root: return root
 
-        queue = deque()
-
-        queue.append(root)
-
-        while queue:
-            node = queue.popleft()
-
-            if node.left != None and node.right != None:
-                node.left.next = node.right
-
-            if node.right != None and node.next != None:
-                node.right.next = node.next.left
-
-            if node.right:
-                queue.append(node.right)
-            
-            if node.left:
-                queue.append(node.left)
+        if root.left != None and root.right != None:
+            root.left.next = root.right
         
-        return root
+        if root.right != None and root.next != None:
+            root.right.next = root.next.left
 
+        self.connect(root.left)
+        self.connect(root.right)
+
+        return root
 
         # SC -> O(N)
         # TC -> O(N)
-                
-
         
