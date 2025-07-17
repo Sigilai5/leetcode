@@ -27,4 +27,7 @@ class Solution:
         
 
         return max_depth
+
+        # SC -> O(N)
+        # TC -> O(N)
         
