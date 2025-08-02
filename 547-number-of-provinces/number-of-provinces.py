@@ -1,5 +1,7 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        # DEPTH FIRST SEARCH APPROACH
+
         if not isConnected: return 0
 
         # get cities length
@@ -33,5 +35,7 @@ class Solution:
         # SC -> O(N) recursion stack plus visited list
 
         # TC -> O(N*N)
+
+        
 
         
