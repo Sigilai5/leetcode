@@ -1,41 +1,35 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        # DEPTH FIRST SEARCH APPROACH
+        # BREADTH FIRST SEARCH
 
         if not isConnected: return 0
 
-        # get cities length
         n = len(isConnected)
 
-        # check if city is visited
+        provinces = 0
+
         visited = [False] * n
-
-        # count provinces
-        count = 0
-
-        def dfs(city):
-            for neighbor in range(n): 
-                if isConnected[city][neighbor] == 1 and not visited[neighbor]:
-                    visited[neighbor] = True
-
-                    dfs(neighbor)
 
         for city in range(n):
             if not visited[city]:
                 visited[city] = True
+                provinces+=1
 
-                count +=1
+                queue = deque()
 
-                dfs(city)
+                queue.append(city)
 
-        
 
-        return count
+                while queue:
+                    node = queue.popleft()
 
-        # SC -> O(N) recursion stack plus visited list
+                    for neighbor in range(n):
+                        if isConnected[node][neighbor] == 1 and not visited[neighbor]:
+                            visited[neighbor] = True
+                            queue.append(neighbor)
 
-        # TC -> O(N*N)
+        return provinces
 
-        
-
-        
+            
+        # SC -> O(N)
+        # TC -> O(N)
