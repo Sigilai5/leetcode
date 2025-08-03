@@ -3,25 +3,28 @@ class Solution:
 
         count = 0
 
-        for i in range(len(grid)):
-            for j in range(len(grid[i])):
-                if grid[i][j] == "1":
-                    count += self.sink(grid,i,j)
+        for r in range(len(grid)):
+            for c in range(len(grid[r])):
+                if grid[r][c] == '1':
+                    count += self.sink(grid,r,c)
         
+        
+
         return count
-    
-    def sink(self,grid,i,j):
-        if (i < 0 or i >= len(grid) or j < 0 or j >= len(grid[i]) or grid[i][j] == "0"):
-            return 0
 
-        grid[i][j] = "0"
-        self.sink(grid,i+1,j)
-        self.sink(grid,i-1,j)
-        self.sink(grid,i,j+1)
-        self.sink(grid,i,j-1) 
-        return 1
+    def sink(self,grid,r,c):
+            if r < 0 or r >= len(grid) or c < 0 or c >= len(grid[r]) or grid[r][c] == '0':
+                return
+            
+            grid[r][c] = '0'
+            self.sink(grid,r+1,c)
+            self.sink(grid,r-1,c)
+            self.sink(grid,r,c+1)
+            self.sink(grid,r,c-1)
 
+            return 1
 
-    
-    # SC -> O(N) for recursive stack frames
-    # TC -> O(N)
+    # SC -> O(1)
+    # TC -> O(R * C)
+
+        
