@@ -1,30 +1,41 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
+        if not grid: return 0
+
+        rows = len(grid)
+        cols = len(grid[0])
+
+        visited = set()
 
         count = 0
 
-        for r in range(len(grid)):
-            for c in range(len(grid[r])):
-                if grid[r][c] == '1':
-                    count += self.sink(grid,r,c)
+        def sink(row,col):
+            if (row < 0 or row >= rows or col < 0  or col >= cols or grid[row][col] == "0" or (row,col) in visited):
+                return
+            
+            visited.add((row,col))
+
+            sink(row-1,col) 
+            sink(row+1,col) 
+            sink(row,col+1)
+            sink(row,col-1)
+
+            return 1
+
+            
         
+
+        for row in range(rows):
+            for col in range(cols):
+                if grid[row][col] == "1" and (row,col) not in visited:
+                   count +=  sink(row,col)
+                    
+                    
         
 
         return count
 
-    def sink(self,grid,r,c):
-            if r < 0 or r >= len(grid) or c < 0 or c >= len(grid[r]) or grid[r][c] == '0':
-                return
-            
-            grid[r][c] = '0'
-            self.sink(grid,r+1,c)
-            self.sink(grid,r-1,c)
-            self.sink(grid,r,c+1)
-            self.sink(grid,r,c-1)
 
-            return 1
-
-    # SC -> O(1)
+    # SC -> O(N)
     # TC -> O(R * C)
-
         
