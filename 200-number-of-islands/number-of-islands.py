@@ -3,14 +3,13 @@ class Solution:
         if not grid: return 0
 
         rows = len(grid)
-        cols = len(grid[0])
-
+       
         visited = set()
 
         count = 0
 
         def sink(row,col):
-            if (row < 0 or row >= rows or col < 0  or col >= cols or grid[row][col] == "0" or (row,col) in visited):
+            if (row < 0 or row >= rows or col < 0  or col >= len(grid[row]) or grid[row][col] == "0" or (row,col) in visited):
                 return
             
             visited.add((row,col))
@@ -26,7 +25,7 @@ class Solution:
         
 
         for row in range(rows):
-            for col in range(cols):
+            for col in range(len(grid[row])):
                 if grid[row][col] == "1" and (row,col) not in visited:
                    count +=  sink(row,col)
                     
