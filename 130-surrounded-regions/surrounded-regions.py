@@ -31,6 +31,7 @@ class Solution:
             if board[rows - 1][col]:
                 dfs(rows - 1,col)
         
+        # Replace all "O" that's inside with "X" and mark all "B" in border with "O"
 
         for row in range(rows):
             for col in range(cols):
