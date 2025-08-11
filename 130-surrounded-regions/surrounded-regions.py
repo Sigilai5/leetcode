@@ -41,5 +41,9 @@ class Solution:
                     board[row][col] = "O"
 
 
+        # SC -> O(R * C)
+        # TC -> O(R * C)
+
+
         
         
