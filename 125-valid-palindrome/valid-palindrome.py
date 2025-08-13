@@ -4,13 +4,11 @@ class Solution:
 
         result = []
 
-        for ch in s:
-            if ch.isalnum():
-                result.append(ch)
+        for word in s:
+            if word.isalnum():
+                result.append(word)
 
-        
         return result == result[::-1]
-
 
         # SC -> O(N)
         # TC -> O(N)
