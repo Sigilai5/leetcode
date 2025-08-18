@@ -2,22 +2,18 @@ class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         if len(intervals) == 1: return intervals
 
-        intervals.sort(key=lambda x:x[0])
+        intervals.sort(key=lambda x: x[0])
 
+        left,right = 0,1
 
-        i,j = 0,1
-
-        while j < len(intervals):
-            if intervals[j][0] <= intervals[i][1]:
-                intervals[i][1] = max(intervals[i][1],intervals[j][1])
-                intervals.pop(j)
+        while right < len(intervals):
+            if intervals[right][0] <= intervals[left][1]:
+                intervals[left][1] = max(intervals[right][1],intervals[left][1]) 
+                intervals.pop(right)
             else:
-                i+=1
-                j+=1
+                left+=1
+                right+=1
 
+        
         return intervals
 
-
-        # SC -> O(1)
-        # TC -> O(N Log N)
-        
