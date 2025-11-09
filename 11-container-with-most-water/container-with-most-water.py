@@ -4,18 +4,16 @@ class Solution:
 
         max_water = 0
 
-
         while left < right:
+            h = min(height[left],height[right])
             w = right - left
-            h = min(height[right],height[left])
+            area = h * w
+            max_water= max(max_water,area)
 
-            a = w * h
-            max_water = max(max_water,a)
-
-            if height[right] < height[left]:
-                right-=1
+            if height[left] < height[right]:
+                left += 1
             else:
-                left+=1
+                right -= 1
         
         return max_water
 
