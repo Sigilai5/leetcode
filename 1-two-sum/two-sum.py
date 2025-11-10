@@ -1,18 +1,21 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        check = {}
+        seen = {}
 
         for i in range(len(nums)):
             dif = target - nums[i]
 
-            if dif in check:
-                return [i,check.get(dif)]
-
-            check[nums[i]] = i
+            if dif in seen:
+                return [i, seen.get(dif)]
+            
+            seen[nums[i]] = i
 
         
-        return [-1,-1]
+    
+    # SC -> O(N)
+    # TC -> O(N)
 
-        # SC -> O(N)
-        # TC -> O(N)
+
+
+
         
