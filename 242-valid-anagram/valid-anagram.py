@@ -2,12 +2,19 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t): return False
 
-        countS = Counter(s)
+        countS = [0] * 26
 
-        countT = Counter(t)
+        countT = [0] * 26
 
+        
+        for i in range(len(s)):
+            countS[ord('a') - ord(s[i])]+=1
+        
+        for j in range(len(t)):
+            countT[ord('a') - ord(t[j])]+=1
+
+        
         return countS == countT
 
-        # SC -> O(N)
-        # TC -> O(N)
-        
+        # SC -> O(26) -> O(1)
+        # TC -> O(N + N)
