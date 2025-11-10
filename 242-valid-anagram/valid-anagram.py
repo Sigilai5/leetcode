@@ -9,12 +9,9 @@ class Solution:
         
         for i in range(len(s)):
             countS[ord('a') - ord(s[i])]+=1
-        
-        for j in range(len(t)):
-            countT[ord('a') - ord(t[j])]+=1
-
+            countT[ord('a') - ord(t[i])]+=1             
         
         return countS == countT
 
         # SC -> O(26) -> O(1)
-        # TC -> O(N + N)
+        # TC -> O(N)
