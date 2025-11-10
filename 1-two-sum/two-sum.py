@@ -6,7 +6,7 @@ class Solution:
             dif = target - nums[i]
 
             if dif in seen:
-                return [i, seen.get(dif)]
+                return [seen.get(dif), i]
             
             seen[nums[i]] = i
 
