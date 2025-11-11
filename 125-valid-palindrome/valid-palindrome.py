@@ -10,9 +10,15 @@ class Solution:
         for char in s:
             if char.isalnum():
                 output.append(char)
-        # reverse array and compare with original array
-        return output == output[::-1]
+        left,right = 0, len(output) - 1
 
-        # SC -> O(N)
-        # TC -> O(N)
+        while left < right:
+            if output[left] != output[right]:
+                return False
+            else:
+                left +=1
+                right -= 1
+        
+
+        return True
         
