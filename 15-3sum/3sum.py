@@ -1,26 +1,28 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
+        # initialize output array/set
+        output = set()
+        # sort nums in ascending order
         nums.sort()
-
-        result = set()
-
+        # loop through the array nums
         for i in range(len(nums)):
-            j = i + 1
-            k = len(nums) - 1
-
+        # initialize pointer j at i + 1 and k at last index
+            j,k = i + 1, len(nums) - 1 
+        # use a while loop to check sum of nums[i] + nums[j] + nums[k] == 0
             while j < k:
-                total = nums[i] + nums[j] + nums[k]
-                if total == 0:
-                    result.add((nums[i],nums[j],nums[k]))
+                if (nums[i] + nums[j] + nums[k]) == 0:
+        # append result in output array
+                    output.add((nums[i],nums[j],nums[k]))
                     j+=1
                     k-=1
-                elif total > 0:
-                    k-=1
+                elif nums[i] + nums[j] + nums[k] < 0:
+                    j+=1
                 else:
-                    j+=1
+                    k-=1
+        # return the array/set
 
-            
-        return list(result)
+        return list(output)
+
 
         # SC -> O(N)
         # TC -> O(N Log N)
