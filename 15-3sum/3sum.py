@@ -6,6 +6,10 @@ class Solution:
         nums.sort()
         # loop through the array nums
         for i in range(len(nums)):
+            # early termination
+            if nums[i] > 0:
+                break
+
         # initialize pointer j at i + 1 and k at last index
             j,k = i + 1, len(nums) - 1 
         # use a while loop to check sum of nums[i] + nums[j] + nums[k] == 0
