@@ -14,5 +14,5 @@ class Solution:
         return True
 
         # SC _> O(N)
-        # TC _> O(N*N)
+        # TC _> O(N*M)
         
