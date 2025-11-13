@@ -4,14 +4,15 @@ class Solution:
             if "()" in s:
                 s = s.replace("()","")
             elif "[]" in s:
-                s = s.replace("[]", "")
+                s = s.replace("[]","")
             elif "{}" in s:
-                s = s.replace("{}", "")
+                s = s.replace("{}","")
             else:
                 return False
-        
 
-        return True
         
-        # TC -> O(N)
-        # SC -> O(N)
+        return True
+
+        # SC _> O(N)
+        # TC _> O(N*N)
+        
