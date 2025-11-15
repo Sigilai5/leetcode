@@ -4,10 +4,9 @@ class Solution:
             for j in range(len(matrix[i])):
                 if matrix[i][j] == target:
                     return True
-
         
         return False
 
         # SC -> O(1)
-        # TC -> O(N*N)
+        # TC -> O(M * N)
         
