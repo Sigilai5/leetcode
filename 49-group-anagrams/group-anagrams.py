@@ -1,15 +1,14 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        group = defaultdict(list)
+        anagrams = defaultdict(list)
 
         for word in strs:
             sorted_word = "".join(list(sorted(word)))
 
-            group[sorted_word].append(word)
+            anagrams[sorted_word].append(word)
 
 
-        return list(group.values())      
+        return list(anagrams.values())   
 
-
-        # TC -> O(N Log N)
-        # SC -> O(N)  
+        # SC -> O(N)
+        # TC -> O(N Log N)     
