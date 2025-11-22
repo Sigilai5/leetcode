@@ -1,12 +1,18 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        if not isConnected: return 0
+        n = len(isConnected) # 3 cities
 
-        n = len(isConnected)
-
-        visited = [False] * n
+        visited = [False] * n # 3 unvisited
 
         count = 0
+
+        def dfs(city):
+            for neighbor in range(n):
+                if isConnected[city][neighbor] == 1 and not visited[neighbor]:
+                    visited[neighbor] = True
+
+                    dfs(neighbor)
+
 
 
         for city in range(n):
@@ -14,20 +20,9 @@ class Solution:
                 count += 1
                 visited[city] = True
 
-                queue = deque()
-                queue.append(city)
-
-                while queue:
-                    current_city = queue.popleft()
-
-                    for neighbor in range(n):
-                        if isConnected[current_city][neighbor] == 1 and not visited[neighbor]:
-                            visited[neighbor] = True
-                            queue.append(neighbor)
+                dfs(city)
 
         
+
         return count
         
-
-        # SC -> O(N)
-        # TC -> O(N * N)
