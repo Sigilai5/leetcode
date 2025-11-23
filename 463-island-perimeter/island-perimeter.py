@@ -3,18 +3,16 @@ class Solution:
         if not grid: return 0
 
         rows = len(grid)
-
-        visited = set()
-               
+              
 
         def dfs(grid,r,c):
             if r < 0 or c < 0 or r >= len(grid) or c >= len(grid[r]) or grid[r][c] == 0:
                 return 1
 
-            if  (r,c) in visited:
+            if grid[r][c] == 2:
                 return 0 
 
-            visited.add((r,c))
+            grid[r][c] = 2
 
             perimeter = 0
             perimeter += dfs(grid,r - 1,c)
