@@ -41,3 +41,7 @@ class Solution:
                     board[row][col] = "X"
                 elif board[row][col] == "B":
                     board[row][col] = "O"
+
+
+        # SC - O(M * N)
+        # TC - O(M * N)
