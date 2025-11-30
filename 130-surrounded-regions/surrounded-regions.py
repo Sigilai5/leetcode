@@ -39,7 +39,7 @@ class Solution:
             for col in range(cols):
                 if board[row][col] == "O":
                     board[row][col] = "X"
-                elif board[row][col] == "B":
+                if board[row][col] == "B":
                     board[row][col] = "O"
 
 
