@@ -1,33 +1,46 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        # initialize count to 0
+        rows, cols = len(grid), len(grid[0])
+
         count = 0
 
-        def sink(grid,i,j):
-            if(i < 0 or j < 0 or i >= len(grid) or j >= len(grid[i]) or grid[i][j] == "0"):
+        def dfs(row,col):
+            if row < 0 or row >= rows or col < 0 or col >= cols or grid[row][col] != "1":
                 return 0
+
+            grid[row][col] = "0"
+            queue = deque()
+            queue.append((row,col))
+
+            while queue:
+                r,c = queue.popleft()
+
+                directions = [[-1,0],[1,0],[0,-1],[0,1]]
+
+                for dr, dc in directions:
+                    new_r = r + dr
+                    new_c = c + dc
+
+                    if 0 <= new_r < rows and 0 <= new_c < cols and grid[new_r][new_c] == "1":
+                        grid[new_r][new_c] = "0"
+                        queue.append((new_r,new_c))
             
-            grid[i][j] = "0" 
 
-            sink(grid,i+1,j) # up
-            sink(grid,i-1,j) # down
-            sink(grid,i,j+1) # right
-            sink(grid,i,j-1) # left
+            return 1
 
-            return 1   
 
-        # traverse through the rows and columns
-        for i in range(len(grid)):
-            for j in range(len(grid[i])):
-                # look for land
-                if grid[i][j] == "1":     
-                # add 1 to the count
-                # sink all land recursively
-                    count += sink(grid,i,j)  
+        for row in range(rows):
+            for col in range(cols):
+                if grid[row][col] == "1":
+                    count += dfs(row,col)
 
+        
         return count
-    
-            
 
         # TC -> O(M * N)
         # SC -> O(M * N)
+
+
+
+
+        
