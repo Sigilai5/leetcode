@@ -1,28 +1,34 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        n = len(isConnected) # 3 cities
+        if not isConnected: return 0
 
-        visited = [False] * n # 3 unvisited
+        # count cities 
+        n = len(isConnected)
 
-        count = 0
+        # a way of marking visited cities
+        visited = [False] * n
+
+        # initialize count
+        provinces = 0
 
         def dfs(city):
             for neighbor in range(n):
                 if isConnected[city][neighbor] == 1 and not visited[neighbor]:
                     visited[neighbor] = True
-
                     dfs(neighbor)
-
+                else:
+                    pass
+                
+            return 1
 
 
         for city in range(n):
             if not visited[city]:
-                count += 1
                 visited[city] = True
+                provinces += dfs(city)
 
-                dfs(city)
-
+        return provinces
         
-
-        return count
+        # SC -> O(M * N)
+        # TC -> O(M * N)
         
