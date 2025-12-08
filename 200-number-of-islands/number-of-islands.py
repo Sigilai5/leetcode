@@ -14,10 +14,11 @@ class Solution:
 
             queue.append((i,j))
 
-            directions = [[-1,0],[1,0],[0,-1],[0,1]]
-
             while queue:
                 r,c = queue.popleft()
+
+                directions = [[-1,0],[1,0],[0,-1],[0,1]]
+
 
                 for dr,dc in directions:
                     new_r = r + dr
