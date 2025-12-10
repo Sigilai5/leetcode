@@ -1,1 +1,1 @@
-<h2>max-area-of-island Notes</h2><hr>[ Time taken: 25 m 58 s ]
+<h2>max-area-of-island Notes</h2><hr>[ Time taken: 6 m 50 s ]
